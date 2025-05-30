@@ -1,0 +1,23 @@
+[
+    {
+        "https://www.google.com/search?q=restaurantes+zona+colonial&num=20&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en": {
+            "message": "Failed to retrieve HTML content (Status: CAPTCHA_DETECTED)",
+            "status_code": "CAPTCHA_DETECTED",
+            "success": false
+        }
+    },
+    {
+        "https://www.google.com/search?q=hoteles+santo+domingo&num=20&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en": {
+            "message": "Failed to retrieve HTML content (Status: CAPTCHA_DETECTED)",
+            "status_code": "CAPTCHA_DETECTED",
+            "success": false
+        }
+    },
+    {
+        "https://www.google.com/search?q=servicios+turisticos+punta+cana&num=20&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en": {
+            "message": "Scraping failed due to unexpected error",
+            "error": "cannot access local variable 'raw_html' where it is not associated with a value",
+            "success": false
+        }
+    }
+]

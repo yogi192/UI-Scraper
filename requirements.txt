@@ -1,0 +1,8 @@
+seleniumbase
+playwright
+playwright_stealth
+lxml_html_clean
+html_to_markdown
+setuptools
+crawl4ai
+aiohttp
