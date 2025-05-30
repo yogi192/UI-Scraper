@@ -30,15 +30,12 @@ from typing import Dict, List, Any, Optional, Union
 from dataclasses import dataclass, field
 from urllib.parse import quote_plus, urlencode, urlparse
 
-from playwright.async_api import async_playwright, Page, Browser
-from playwright_stealth import stealth_async
-
 # Add project root to Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(project_root)
 
 from logs.custom_logging import setup_logging
-from utils.helpers import PlaywrightBrowserManager, HTMLContentProcessor, save_debug_files, save_output_data
+from utils.helpers import SeleniumBaseBrowserManager, HTMLContentProcessor, save_debug_files, save_output_data
 from scrapers.llm_data_extraction import create_search_extractor, ExtractionConfig
 from settings import SEARCH_RESULTS_EXTRACTION_PROMPT, LLM_CONFIG as default_llm_config
 from schemas.search_schema import SearchExtractionResult
@@ -93,7 +90,7 @@ class SearchResultsScraper:
     
     Attributes:
         scraping_config: Configuration for scraping parameters
-        playwright_browser: Browser manager for web scraping
+        seleniumbase_browser: Browser manager for web scraping
         html_processor: HTML content processor for cleaning and extraction
         google_base_url: Base URL for Google search queries
     """
@@ -106,7 +103,7 @@ class SearchResultsScraper:
             scraping_config: Optional configuration for scraping parameters
         """
         self.scraping_config = scraping_config or SearchScrapingConfig()
-        self.playwright_browser = PlaywrightBrowserManager()
+        self.seleniumbase_browser = SeleniumBaseBrowserManager()
         self.html_processor = HTMLContentProcessor()
         self.google_base_url = "https://www.google.com/search"
         
@@ -189,101 +186,6 @@ class SearchResultsScraper:
         
         return complete_search_url
 
-    async def _scrape_single_search_result(
-        self, 
-        search_url: str, 
-        browser: Browser
-    ) -> Dict[str, Any]:
-        """
-        Scrape a single search results page using stealth techniques.
-        
-        This method handles the actual web scraping of a single search results page,
-        including stealth mode activation, content extraction, and error handling.
-        
-        Args:
-            search_url: Complete Google search URL to scrape
-            browser: Playwright browser instance
-            
-        Returns:
-            Dictionary containing scraped content or error information
-        """
-        # Extract clean URL identifier for logging
-        parsed_url = urlparse(search_url)
-        url_identifier = f"{parsed_url.netloc}{parsed_url.path}"
-        
-        logger.debug(f"Starting scrape for search URL: {url_identifier}")
-        
-        try:
-            # Create new browser context for isolation
-            browser_context = await browser.new_context()
-            search_page = await browser_context.new_page()
-            
-            # Apply stealth mode if enabled
-            if self.scraping_config.enable_stealth_mode:
-                await stealth_async(search_page)
-                logger.debug("Applied stealth mode to browser page")
-            
-            # Set page timeout
-            search_page.set_default_timeout(self.scraping_config.timeout_seconds * 1000)
-            
-            # Scrape HTML content
-            raw_html_content, http_status_code = await self.playwright_browser.get_html_content(
-                url=search_url, 
-                page=search_page
-            )
-            
-            # Validate HTML content retrieval
-            if not raw_html_content or http_status_code != 200:
-                error_message = f"Failed to retrieve HTML content (Status: {http_status_code})"
-                logger.warning(f"❌ {error_message} for URL: {url_identifier}")
-                return {
-                    search_url: {
-                        "message": error_message,
-                        "status_code": http_status_code,
-                        "success": False
-                    }
-                }
-            
-            # Process HTML content for LLM consumption
-            cleaned_html_content = self.html_processor.clean_html(raw_html=raw_html_content)
-            llm_friendly_content = self.html_processor.get_llm_friendly_content(raw_html_content)
-            
-            # Log content processing metrics
-            logger.debug(f"Processed HTML - Cleaned: {len(str(cleaned_html_content))} chars")
-            logger.debug(f"Processed HTML - LLM-friendly: {len(str(llm_friendly_content))} chars")
-            
-            logger.info(f"✅ Successfully scraped search results from: {url_identifier}")
-            
-            return {
-                search_url: {
-                    "message": "Search results scraped successfully",
-                    "content": llm_friendly_content,
-                    "status_code": http_status_code,
-                    "success": True,
-                    "content_length": len(str(llm_friendly_content))
-                }
-            }
-            
-        except Exception as scraping_error:
-            error_message = f"Unexpected error during search scraping: {str(scraping_error)}"
-            logger.error(f"❌ {error_message} for URL: {url_identifier}")
-            logger.debug(f"Scraping error traceback: {traceback.format_exc()}")
-            
-            return {
-                search_url: {
-                    "message": "Scraping failed due to unexpected error",
-                    "error": str(scraping_error),
-                    "success": False
-                }
-            }
-        
-        finally:
-            # Ensure cleanup of browser context
-            try:
-                await browser_context.close()
-            except:
-                pass  # Ignore cleanup errors
-
     async def scrape_multiple_search_results(
         self, 
         search_urls: List[str]
@@ -319,62 +221,73 @@ class SearchResultsScraper:
         all_scraping_results = []
         
         try:
-            # Launch browser with appropriate configuration
-            async with async_playwright() as playwright:
-                browser = await playwright.chromium.launch(
-                    headless=False,  # Keep visible for debugging and anti-detection
-                    args=['--no-sandbox', '--disable-dev-shm-usage']
-                )
+            # Process URLs in batches to respect rate limits
+            batch_size = self.scraping_config.max_concurrent_searches
+            
+            for batch_start in range(0, total_urls, batch_size):
+                batch_end = min(batch_start + batch_size, total_urls)
+                current_batch = valid_search_urls[batch_start:batch_end]
                 
-                logger.info("Browser launched successfully")
+                batch_number = (batch_start // batch_size) + 1
+                total_batches = (total_urls - 1) // batch_size + 1
                 
-                # Process URLs in batches to respect rate limits
-                batch_size = self.scraping_config.max_concurrent_searches
+                logger.info(f"Processing batch {batch_number}/{total_batches} ({len(current_batch)} URLs)")
                 
-                for batch_start in range(0, total_urls, batch_size):
-                    batch_end = min(batch_start + batch_size, total_urls)
-                    current_batch = valid_search_urls[batch_start:batch_end]
+                # Scrape the entire batch concurrently
+                batch_scraping_results = await self.seleniumbase_browser.batch_scrape(current_batch)
+                
+                # Process results
+                for i, (raw_html, status_code) in enumerate(batch_scraping_results):
+                    url = current_batch[i]
+                    # Extract clean URL identifier for logging
+                    parsed_url = urlparse(url)
+                    url_identifier = f"{parsed_url.netloc}{parsed_url.path}"
                     
-                    batch_number = (batch_start // batch_size) + 1
-                    total_batches = (total_urls - 1) // batch_size + 1
-                    
-                    logger.info(f"Processing batch {batch_number}/{total_batches} ({len(current_batch)} URLs)")
-                    
-                    # Create scraping tasks for current batch
-                    batch_scraping_tasks = [
-                        self._scrape_single_search_result(url, browser) 
-                        for url in current_batch
-                    ]
-                    
-                    # Execute batch scraping concurrently
-                    batch_results = await asyncio.gather(*batch_scraping_tasks, return_exceptions=True)
-                    
-                    # Process batch results and handle exceptions
-                    for i, result in enumerate(batch_results):
-                        if isinstance(result, Exception):
-                            error_url = current_batch[i]
-                            error_message = f"Batch processing error: {str(result)}"
-                            logger.error(f"❌ {error_message} for URL: {error_url}")
-                            
-                            # Create error result
-                            error_result = {
-                                error_url: {
-                                    "message": "Batch processing failed",
-                                    "error": str(result),
+                    try:
+                        # Validate HTML content retrieval
+                        if not raw_html or status_code != 200:
+                            error_message = f"Failed to retrieve HTML content (Status: {status_code})"
+                            logger.warning(f"❌ {error_message} for URL: {url_identifier}")
+                            result = {
+                                url: {
+                                    "message": error_message,
+                                    "status_code": status_code,
                                     "success": False
                                 }
                             }
-                            all_scraping_results.append(error_result)
                         else:
-                            all_scraping_results.append(result)
-                    
-                    # Add delay between batches to avoid rate limiting
-                    if batch_end < total_urls:
-                        logger.debug(f"Inter-batch delay: {self.scraping_config.search_delay_seconds}s")
-                        await asyncio.sleep(self.scraping_config.search_delay_seconds)
+                            # Process HTML content for LLM consumption
+                            llm_friendly_content = self.html_processor.get_llm_friendly_content(raw_html)
+                            
+                            # Log content processing metrics
+                            logger.debug(f"Processed HTML - LLM-friendly: {len(str(llm_friendly_content))} chars")
+                            logger.info(f"✅ Successfully scraped search results from: {url_identifier}")
+                            
+                            result = {
+                                url: {
+                                    "message": "Search results scraped successfully",
+                                    "content": llm_friendly_content,
+                                    "status_code": status_code,
+                                    "success": True,
+                                    "content_length": len(str(llm_friendly_content))
+                                }
+                            }
+                        all_scraping_results.append(result)
+                    except Exception as e:
+                        logger.error(f"Error processing result for {url_identifier}: {e}")
+                        logger.debug(f"Error traceback: {traceback.format_exc()}")
+                        all_scraping_results.append({
+                            url: {
+                                "message": "Result processing failed",
+                                "error": str(e),
+                                "success": False
+                            }
+                        })
                 
-                await browser.close()
-                logger.info("Browser closed successfully")
+                # Add delay between batches to avoid rate limiting
+                if batch_end < total_urls:
+                    logger.debug(f"Inter-batch delay: {self.scraping_config.search_delay_seconds}s")
+                    await asyncio.sleep(self.scraping_config.search_delay_seconds)
         
         except Exception as batch_error:
             error_message = f"Batch scraping process failed: {str(batch_error)}"
@@ -396,6 +309,8 @@ class SearchResultsScraper:
         logger.debug("Scraping results saved to debug files")
         
         return all_scraping_results
+
+
 
     async def extract_business_urls_from_searches(
         self,

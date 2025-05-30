@@ -11,6 +11,9 @@ from typing import Optional, List, Dict, Any, Tuple, Union, Set
 from playwright.async_api import Page
 import aiohttp, time
 from datetime import datetime
+from dataclasses import dataclass
+from seleniumbase import SB
+from concurrent.futures import ThreadPoolExecutor
 
 import os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -21,149 +24,130 @@ logger = setup_logging(console_level=logging.DEBUG)
 
 
 #======================================================
-# PlaywrightBrowserManager → Handles browser operations
+# SeleniumBaseBrowserManager → Handles browser operations
 #======================================================
 
-class PlaywrightBrowserManager:
+class SeleniumBaseBrowserManager:
     """
-    Manages Playwright browser instances and provides robust methods for
-    asynchronously fetching and validating HTML content from dynamic websites.
-    Includes scrolling for lazy-loaded content, timeout-safe loading,
-    and basic bot detection.
+    Manages browser operations using SeleniumBase with undetected-chromedriver (UC) mode.
+    Provides robust methods for fetching HTML content from websites, especially Google search,
+    with CAPTCHA solving capabilities and human-like interactions.
     """
 
-    def __init__(self, browser_type: str = "chromium",
-                 page_load_timeout: int = 450000, min_html_length: int = 30000):
-
-        self.browser_type = browser_type
-        self.page_load_timeout = page_load_timeout
+    def __init__(self, min_html_length: int = 30000, headless: bool = False):
         self.min_html_length = min_html_length
+        self.headless = headless
+        self.cookies = self.load_google_cookies()
 
-    async def _scroll_and_for_content(self, page: Page):
+    def load_google_cookies(self) -> List[Dict[str, str]]:
+        """Load Google cookies from environment variable or file"""
+        cookies = []
+        try:
+            # Try loading from environment variable first
+            if os.getenv("GOOGLE_COOKIES"):
+                cookies = json.loads(os.getenv("GOOGLE_COOKIES"))
+                logger.info(f"Loaded {len(cookies)} cookies from environment")
+            # Fallback to file
+            elif os.path.exists("utils/google_cookies.json"):
+                with open("utils/google_cookies.json", "r") as f:
+                    cookies = json.load(f)
+                logger.info(f"Loaded {len(cookies)} cookies from file")
+        except Exception as e:
+            logger.error(f"Error loading cookies: {e}")
+        return cookies
+
+    def _scrape_with_seleniumbase(self, url: str) -> Tuple[str, Union[str, int]]:
         """
-        Scrolls down to the bottom and back to the top with dynamic steps
-        to trigger content loading efficiently.
+        Synchronously scrape the given URL using SeleniumBase with UC mode and CAPTCHA handling.
+
+        Args:
+            url (str): URL to scrape
+
+        Returns:
+            Tuple of (raw_html, status_code) where status_code is 200 for success or a string error code
         """
         try:
-            logger.info(f"Scrolling to load content for {page.url}")
-            
-            # Get initial page dimensions
-            viewport_height = await page.evaluate("window.innerHeight")
-            total_height = await page.evaluate("document.body.scrollHeight")
-            
-            # Calculate optimal number of scroll steps (3-5 steps)
-            num_steps = max(3, min(5, total_height // viewport_height))
-            step_size = total_height // num_steps
-            
-            # Scroll down to bottom in smooth increments
-            logger.info(f"Scrolling down ({num_steps} steps)")
-            for i in range(1, num_steps + 1):
-                target = step_size * i
-                await page.evaluate(f"""
-                    window.scrollTo({{
-                        top: {target},
-                        behavior: 'smooth'
-                    }});
-                """)
-                # Wait dynamically based on step size (faster for smaller pages)
-                await asyncio.sleep(max(0.3, min(1.0, step_size / 2000)))
+            with SB(
+                uc=True,
+                headless=self.headless,
+                undetected=True,
+            ) as sb:
+                # Open URL with human-like delay
+                sb.open(url)
+                sb.sleep(random.uniform(1.5, 3.5))
+
+                # Add Google cookies if available
+                if self.cookies:
+                    for cookie in self.cookies:
+                        sb.add_cookie(cookie)
+                    sb.refresh()
+                    sb.sleep(random.uniform(1.0, 2.0))
+
+                # Initial content check
+                html_content = sb.get_page_source()
                 
-                # Update total height in case content expanded
-                new_height = await page.evaluate("document.body.scrollHeight")
-                if new_height > total_height:
-                    total_height = new_height
-                    step_size = total_height // num_steps
+                # Check for blocking indicators
+                blocking_detected = (
+                    "Our systems have detected unusual traffic from your computer network." in html_content or
+                    sb.is_element_visible('iframe[title="reCAPTCHA"]') or
+                    sb.is_element_visible('form[id="captcha-form"]')
+                )
+                
+                # Handle CAPTCHA if detected
+                if len(html_content) < self.min_html_length and blocking_detected:
+                    logger.warning(f"CAPTCHA detected on {url}. Attempting to solve...")
+                    
+                    # Use SeleniumBase's built-in CAPTCHA handling
+                    sb.uc_open_with_reconnect(url, 4)
+                    sb.uc_gui_handle_captcha()
+                    
+                    # Check if manual solving is needed
+                    if sb.is_element_visible('div[id="rc-imageselect"]'):
+                        logger.warning("Manual CAPTCHA solving required")
+                        input("Please solve CAPTCHA and press Enter to continue...")
+                    
+                    # Refresh after solving
+                    sb.sleep(2)
+                    html_content = sb.get_page_source()
 
-            # Scroll back to top quickly
-            logger.info("Scrolling back to top")
-            await page.evaluate("window.scrollTo({ top: 0, behavior: 'smooth' });")
-            await asyncio.sleep(1)
+                # Human-like scrolling to trigger lazy loading
+                if len(html_content) < self.min_html_length:
+                    logger.info("Performing human-like scrolling to load content")
+                    sb.scroll_to_bottom()
+                    sb.sleep(random.uniform(0.5, 1.5))
+                    sb.scroll_to_top()
+                    sb.sleep(random.uniform(0.5, 1.0))
+                    html_content = sb.get_page_source()
 
-            # Wait for page to stabilize
-            try:
-                await page.wait_for_load_state("networkidle", timeout=5000)
-            except Exception:
-                logger.debug("Network idle state not reached within timeout")
+                # Final validation
+                if len(html_content) < self.min_html_length:
+                    logger.warning(f"HTML content too short ({len(html_content)} chars)")
+                    status_code = 'HTML_TOO_SHORT'
+                else:
+                    logger.info(f"Successfully captured HTML ({len(html_content)} chars)")
+                    status_code = 200
+
+                return html_content, status_code
 
         except Exception as e:
-            logger.warning(f"Error during scrolling: {e}", exc_info=True)
+            logger.error(f"SeleniumBase scraping error: {e}")
+            logger.debug(traceback.format_exc())
+            return "", f'UNEXPECTED_ERROR: {str(e)}'
+
+    async def batch_scrape(self, urls: List[str]) -> List[Tuple[str, Union[str, int]]]:
+        """
+        Scrape multiple URLs concurrently using thread pool execution.
+        
+        Args:
+            urls: List of URLs to scrape
             
-    async def get_html_content(self, url: str, page: Page) -> Tuple[str, Union[str, int]]:
+        Returns:
+            List of tuples (raw_html, status_code) in the same order as input URLs
         """
-        Main HTML content extractor.
-        Handles scrolling, waits for content, validates HTML, and detects common bot checks or issues.
-        Returns raw HTML and status code string (or 200 if success).
-        """
-        try:
-            await page.goto(url, timeout=self.page_load_timeout)
-            await asyncio.sleep(random.uniform(0.5, 2.0))
-
-            await page.route("**/*", lambda route: route.abort() 
-            if route.request.resource_type in {"image", "stylesheet", "font"} 
-            else route.continue_()
-    )         
-            # Add human-like mouse movements
-            await page.mouse.move(
-                random.randint(0, 100),
-                random.randint(0, 100),
-                steps=random.randint(5, 20)
-            )
-            await asyncio.sleep(random.uniform(0.5, 2.0))
-            await self._scroll_and_for_content(page)
-            raw_html = await page.content()
-
-            # Content validation
-            lower_html = raw_html.lower()
-            if len(raw_html) < self.min_html_length:
-                logger.warning(f"HTML content too short for {url} ({len(raw_html)} characters). Potentially incomplete.")
-                cleaned_url = url.split('://')[-1].split('/')[0]
-                await page.screenshot(path=f"debug_files/search_results_scraping.{cleaned_url}_short_screenshot.png", full_page=True)
-                
-                blocking_terms = [
-                        "captcha",
-                        "bot verification",
-                        "are you a robot",
-                        "human verification",
-                        "prove you're not a robot",
-                        "security check required",
-                        "solve the CAPTCHA",
-                        "please verify",
-                        "access denied",
-                        "forbidden",
-                        "error 403", # HTML might contain this string
-                        "rate limit",
-                        "ip address blocked",
-                        "unusual traffic",
-                        "checking your browser", # Cloudflare
-                        "just a moment", # Cloudflare/similar
-                        "ddos protection",
-                        "cloudflare", # If mentioned explicitly in text
-                        "recaptcha",
-                        "g-recaptcha", # Class/ID
-                        "h-captcha",
-                        "blocked by firewall",
-                        "robot detected"
-                    ]
-                
-                if any(term in lower_html for term in blocking_terms):
-                    logger.warning(f"CAPTCHA detected on {url}. HTML capture aborted.")
-                    status_code = 'CAPTCHA_DETECTED'
-                    await page.screenshot(path=f"{cleaned_url}_captcha_screenshot.png", full_page=True)
-                    input()
-                    return raw_html, status_code
-                
-                status_code = 'HTML_TOO_SHORT'
-                return raw_html, status_code
-            else:
-                logger.info(f"Successfully captured HTML from {url} (length: {len(raw_html)}).")
-                status_code = 200
-
-        except Exception as e:
-            logger.error(f"Unexpected error during HTML capture for {url}: {e}", exc_info=True)
-            status_code = 'UNEXPECTED_ERROR'
-            return raw_html, status_code
-
-        return raw_html, status_code
+        loop = asyncio.get_running_loop()
+        with ThreadPoolExecutor(max_workers=3) as executor:  # Conservative concurrency
+            tasks = [loop.run_in_executor(executor, self._scrape_with_seleniumbase, url) for url in urls]
+            return await asyncio.gather(*tasks)
 
 
 #==================================================================
@@ -508,87 +492,6 @@ def load_input_data(search_terms: bool = False, search_urls: bool = False, websi
         logger.debug(traceback.format_exc())
 
     return []
-
-
-# def deduplicate_dict_list_ordered(dict_list: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-#     """Remove duplicate dictionaries while preserving their original order."""
-#     seen: Set[str] = set()
-#     unique_items: List[Dict[str, Any]] = []
-
-#     for item in dict_list:
-#         try:
-#             serialized = json.dumps(item, sort_keys=True)
-#         except TypeError:
-#             logger.warning("Skipping unserializable item during deduplication.")
-#             continue
-
-#         if serialized not in seen:
-#             seen.add(serialized)
-#             unique_items.append(item)
-
-#     return unique_items
-
-
-# def save_output_data(output_data: List[Dict[str, Any]]):
-#     """
-#     Save raw and cleaned output data to separate files. Automatically appends and deduplicates content.
-
-#     - Raw data is saved to: output/raw_extracted_data.json
-#     - Cleaned data (only items with 'data' key) is saved to: output/cleaned_extracted_data.json
-
-#     Args:
-#         output_data (List[Dict[str, Any]]): Extracted output to save.
-#     """
-#     raw_path = "output/raw_extracted_data.json"
-#     cleaned_path = "output/cleaned_extracted_data.json"
-
-#     os.makedirs(os.path.dirname(raw_path), exist_ok=True)
-
-#     try:
-#         # Initialize existing data
-#         existing_data = []
-        
-#         # Check if file exists and has content
-#         if os.path.exists(raw_path) and os.path.getsize(raw_path) > 0:
-#             try:
-#                 with open(raw_path, "r", encoding="utf-8") as f:
-#                     existing_data = json.load(f)
-#             except json.JSONDecodeError:
-#                 logger.warning("Raw data file contains invalid JSON. Starting fresh.")
-#                 existing_data = []
-        
-#         # Combine and deduplicate
-#         combined = existing_data + output_data
-#         # deduplicated = deduplicate_dict_list(combined)
-#         deduplicated = combined
-
-#         # Save raw data
-#         with open(raw_path, "w", encoding="utf-8") as f:
-#             json.dump(deduplicated, f, indent=4, ensure_ascii=False)
-
-#         # Filter and save cleaned data
-#         cleaned = []
-#         for item in deduplicated:
-#             # Handle both dictionary items and lists of items
-#             if isinstance(item, dict):
-#                 if item.get("entities") and isinstance(item["entities"], list):
-#                     cleaned.append(item)
-#             elif isinstance(item, list):
-#                 for subitem in item:
-#                     if isinstance(subitem, dict) and subitem.get("entities") and isinstance(subitem["entities"], list):
-#                         cleaned.append(subitem)
-#             else:
-#                 logger.warning(f"Unexpected item type in output_data: {type(item)}")
-                
-    
-#         with open(cleaned_path, "w", encoding="utf-8") as f:
-#             json.dump(cleaned, f, indent=4, ensure_ascii=False)
-
-#         logger.info(f"💾 Saved {len(deduplicated)} raw and {len(cleaned)} cleaned items.")
-
-#     except Exception as e:
-#         logger.error(f"❌ Error saving output data: {e}")
-#         logger.debug(traceback.format_exc())
 
 
 

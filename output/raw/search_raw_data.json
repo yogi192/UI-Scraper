@@ -90,5 +90,228 @@
                 "url": "https://www.alacarta.do/restaurantes/O.html"
             }
         ]
+    },
+    {
+        "metadata": {
+            "context": {
+                "query": "unknown",
+                "url": "https://www.google.com/search?q=restaurantes+zona+colonial&num=50&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en",
+                "results": 0
+            },
+            "result": {
+                "success": false,
+                "urls_found": 0,
+                "error": "ExtractionError",
+                "error_details": "Batch 1 processing failed: BrowserType.launch: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> C:\\Users\\anasf\\AppData\\Local\\ms-playwright\\chromium-1169\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AutoExpandDetailsElement,AvoidUnnecessaryBeforeUnloadCheckSync,CertificateTransparencyComponentUpdater,DeferRendererTasksAfterInput,DestroyProfileOnBrowserClose,DialMediaRouteProvider,ExtensionManifestV2Disabled,GlobalMediaControls,HttpsUpgrades,ImprovedCookieControls,LazyFrameLoading,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --disable-gpu --disable-gpu-compositing --disable-software-rasterizer --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check --disable-infobars --window-position=0,0 --ignore-certificate-errors --ignore-certificate-errors-spki-list --disable-blink-features=AutomationControlled --window-position=400,0 --disable-renderer-backgrounding --disable-ipc-flooding-protection --force-color-profile=srgb --mute-audio --disable-background-timer-throttling --window-size=1080,600 --user-data-dir=C:\\Users\\anasf\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-PiSXAz --remote-debugging-pipe --no-startup-window\n<launched> pid=23100\n[pid=23100] <gracefully close start>\nCall log:\n  - <launching> C:\\Users\\anasf\\AppData\\Local\\ms-playwright\\chromium-1169\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AutoExpandDetailsElement,AvoidUnnecessaryBeforeUnloadCheckSync,CertificateTransparencyComponentUpdater,DeferRendererTasksAfterInput,DestroyProfileOnBrowserClose,DialMediaRouteProvider,ExtensionManifestV2Disabled,GlobalMediaControls,HttpsUpgrades,ImprovedCookieControls,LazyFrameLoading,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --disable-gpu --disable-gpu-compositing --disable-software-rasterizer --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check --disable-infobars --window-position=0,0 --ignore-certificate-errors --ignore-certificate-errors-spki-list --disable-blink-features=AutomationControlled --window-position=400,0 --disable-renderer-backgrounding --disable-ipc-flooding-protection --force-color-profile=srgb --mute-audio --disable-background-timer-throttling --window-size=1080,600 --user-data-dir=C:\\Users\\anasf\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-PiSXAz --remote-debugging-pipe --no-startup-window\n  - <launched> pid=23100\n  - [pid=23100] <gracefully close start>\n"
+            }
+        },
+        "urls": []
+    },
+    {
+        "metadata": {
+            "context": {
+                "query": "unknown",
+                "url": "https://www.google.com/search?q=hoteles+santo+domingo&num=50&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en",
+                "results": 0
+            },
+            "result": {
+                "success": false,
+                "urls_found": 0,
+                "error": "ExtractionError",
+                "error_details": "Batch 1 processing failed: BrowserType.launch: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> C:\\Users\\anasf\\AppData\\Local\\ms-playwright\\chromium-1169\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AutoExpandDetailsElement,AvoidUnnecessaryBeforeUnloadCheckSync,CertificateTransparencyComponentUpdater,DeferRendererTasksAfterInput,DestroyProfileOnBrowserClose,DialMediaRouteProvider,ExtensionManifestV2Disabled,GlobalMediaControls,HttpsUpgrades,ImprovedCookieControls,LazyFrameLoading,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --disable-gpu --disable-gpu-compositing --disable-software-rasterizer --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check --disable-infobars --window-position=0,0 --ignore-certificate-errors --ignore-certificate-errors-spki-list --disable-blink-features=AutomationControlled --window-position=400,0 --disable-renderer-backgrounding --disable-ipc-flooding-protection --force-color-profile=srgb --mute-audio --disable-background-timer-throttling --window-size=1080,600 --user-data-dir=C:\\Users\\anasf\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-PiSXAz --remote-debugging-pipe --no-startup-window\n<launched> pid=23100\n[pid=23100] <gracefully close start>\nCall log:\n  - <launching> C:\\Users\\anasf\\AppData\\Local\\ms-playwright\\chromium-1169\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AutoExpandDetailsElement,AvoidUnnecessaryBeforeUnloadCheckSync,CertificateTransparencyComponentUpdater,DeferRendererTasksAfterInput,DestroyProfileOnBrowserClose,DialMediaRouteProvider,ExtensionManifestV2Disabled,GlobalMediaControls,HttpsUpgrades,ImprovedCookieControls,LazyFrameLoading,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --disable-gpu --disable-gpu-compositing --disable-software-rasterizer --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check --disable-infobars --window-position=0,0 --ignore-certificate-errors --ignore-certificate-errors-spki-list --disable-blink-features=AutomationControlled --window-position=400,0 --disable-renderer-backgrounding --disable-ipc-flooding-protection --force-color-profile=srgb --mute-audio --disable-background-timer-throttling --window-size=1080,600 --user-data-dir=C:\\Users\\anasf\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-PiSXAz --remote-debugging-pipe --no-startup-window\n  - <launched> pid=23100\n  - [pid=23100] <gracefully close start>\n"
+            }
+        },
+        "urls": []
+    },
+    {
+        "metadata": {
+            "context": {
+                "query": "unknown",
+                "url": "https://www.google.com/search?q=servicios+turisticos+punta+cana&num=50&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en",
+                "results": 0
+            },
+            "result": {
+                "success": false,
+                "urls_found": 0,
+                "error": "ExtractionError",
+                "error_details": "Batch 1 processing failed: BrowserType.launch: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> C:\\Users\\anasf\\AppData\\Local\\ms-playwright\\chromium-1169\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AutoExpandDetailsElement,AvoidUnnecessaryBeforeUnloadCheckSync,CertificateTransparencyComponentUpdater,DeferRendererTasksAfterInput,DestroyProfileOnBrowserClose,DialMediaRouteProvider,ExtensionManifestV2Disabled,GlobalMediaControls,HttpsUpgrades,ImprovedCookieControls,LazyFrameLoading,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --disable-gpu --disable-gpu-compositing --disable-software-rasterizer --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check --disable-infobars --window-position=0,0 --ignore-certificate-errors --ignore-certificate-errors-spki-list --disable-blink-features=AutomationControlled --window-position=400,0 --disable-renderer-backgrounding --disable-ipc-flooding-protection --force-color-profile=srgb --mute-audio --disable-background-timer-throttling --window-size=1080,600 --user-data-dir=C:\\Users\\anasf\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-PiSXAz --remote-debugging-pipe --no-startup-window\n<launched> pid=23100\n[pid=23100] <gracefully close start>\nCall log:\n  - <launching> C:\\Users\\anasf\\AppData\\Local\\ms-playwright\\chromium-1169\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AutoExpandDetailsElement,AvoidUnnecessaryBeforeUnloadCheckSync,CertificateTransparencyComponentUpdater,DeferRendererTasksAfterInput,DestroyProfileOnBrowserClose,DialMediaRouteProvider,ExtensionManifestV2Disabled,GlobalMediaControls,HttpsUpgrades,ImprovedCookieControls,LazyFrameLoading,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --disable-gpu --disable-gpu-compositing --disable-software-rasterizer --no-sandbox --disable-dev-shm-usage --no-first-run --no-default-browser-check --disable-infobars --window-position=0,0 --ignore-certificate-errors --ignore-certificate-errors-spki-list --disable-blink-features=AutomationControlled --window-position=400,0 --disable-renderer-backgrounding --disable-ipc-flooding-protection --force-color-profile=srgb --mute-audio --disable-background-timer-throttling --window-size=1080,600 --user-data-dir=C:\\Users\\anasf\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-PiSXAz --remote-debugging-pipe --no-startup-window\n  - <launched> pid=23100\n  - [pid=23100] <gracefully close start>\n"
+            }
+        },
+        "urls": []
+    },
+    {
+        "metadata": {
+            "context": {
+                "query": "restaurantes zona colonial",
+                "url": "https://www.google.com/search?q=restaurantes+zona+colonial&num=50&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en",
+                "results": 24000
+            },
+            "result": {
+                "success": true,
+                "urls_found": 15,
+                "error": null,
+                "error_details": null
+            }
+        },
+        "urls": [
+            {
+                "title": "Ocho restaurantes donde comer en la Zona Colonial Diario Librehttps://www.diariolibre.com › revista › cultura › ocho\\-re...",
+                "reason": "Points to a Diario Libre article listing restaurants in Zona Colonial, DR",
+                "url": "https://www.diariolibre.com/revista/cultura/ocho-restaurantes-donde-comer-en-la-zona-colonial-GD27244772"
+            },
+            {
+                "title": "Ocho restaurantes donde comer en la Zona Colonial elpaisaldia.dohttps://elpaisaldia.do › Destacados",
+                "reason": "Points to elpaisaldia.do article listing restaurants in Zona Colonial, DR",
+                "url": "https://elpaisaldia.do/2021/07/09/ocho-restaurantes-donde-comer-en-la-zona-colonial/"
+            },
+            {
+                "title": "Jalao - 100% de Aquí jalao.dohttps://jalao.do",
+                "reason": "Direct link to Jalao restaurant website, located in Zona Colonial, DR",
+                "url": "https://jalao.do/"
+            },
+            {
+                "title": "Conoce CASARRÉ: el nuevo restaurante de la Zona Colonial revistapandora.com.dohttps://revistapandora.com.do › Lifestyle",
+                "reason": "Points to revistapandora.com.do article about a new restaurant in Zona Colonial, DR",
+                "url": "https://revistapandora.com.do/lifestyle/restaurante-zona-colonial/"
+            },
+            {
+                "title": "Menu | Eat. Drink. Party! | Onno's Bar & Restaurant onnosdr.comhttps://zonacolonial.onnosdr.com › ...",
+                "reason": "Direct link to Onno's Bar & Restaurant menu in Zona Colonial, DR",
+                "url": "https://zonacolonial.onnosdr.com/menu/"
+            },
+            {
+                "title": "5 restaurantes típicos en Santo Domingo que debes visitar revistapandora.com.dohttps://revistapandora.com.do › Bureo Local › Lugares",
+                "reason": "Points to revistapandora.com.do article about typical restaurants in Santo Domingo, DR",
+                "url": "https://revistapandora.com.do/bureo-local/lugares/5-restaurantes-tipicos-en-santo-domingo-que-debes-visitar/"
+            },
+            {
+                "title": "Restaurantes Menu.com.dohttps://menu.com.do › restaurantes",
+                "reason": "Points to Menu.com.do listing restaurants in Santo Domingo, DR",
+                "url": "https://menu.com.do/restaurantes/"
+            },
+            {
+                "title": "Zona Colonial | Eat. Drink. Party! | Onno's Bar & Restaurant onnosdr.comhttps://zonacolonial.onnosdr.com",
+                "reason": "Direct link to Onno's Bar & Restaurant website in Zona Colonial, DR",
+                "url": "https://zonacolonial.onnosdr.com/"
+            },
+            {
+                "title": "Pizza en Santo Domingo: 5 restaurantes que debes conocer The Best of DRhttps://thebestofdr.do › Dining Out",
+                "reason": "Points to The Best of DR article about pizza restaurants in Santo Domingo, DR",
+                "url": "https://thebestofdr.do/dining-out/santo-domingo-al-forno-5-restaurantes-de-pizza-que-debes-conocer/"
+            },
+            {
+                "title": "Los 13 mejores restaurantes en santo domingo Revista Mercadohttps://revistamercado.do › actualidad › los\\-mejores\\-res...",
+                "reason": "Points to Revista Mercado article about the best restaurants in Santo Domingo, DR",
+                "url": "https://revistamercado.do/actualidad/los-mejores-restaurantes-rd/"
+            },
+            {
+                "title": "Onno's Bar Zona Colonial alacarta.dohttps://www.alacarta.do › restaurante › OnnosBarZona...",
+                "reason": "Points to alacarta.do listing for Onno's Bar in Zona Colonial, DR",
+                "url": "https://www.alacarta.do/restaurante/OnnosBarZonaColonial"
+            },
+            {
+                "title": "Don Nestor Parrillada Reserva Yahttps://www.reservaya.com.do › restaurante › don\\-nest...",
+                "reason": "Points to Reserva Ya listing for Don Nestor Parrillada, DR",
+                "url": "https://www.reservaya.com.do/restaurante/don-nestor-parrillada"
+            },
+            {
+                "title": "ZOLA restaurante abre sus puertas en la Ciudad Colonial El Nuevo Diario (República Dominicana)https://elnuevodiario.com.do › zola\\-restaurante\\-abre\\-sus\\-...",
+                "reason": "Points to El Nuevo Diario article about ZOLA restaurant opening in Ciudad Colonial, DR",
+                "url": "https://elnuevodiario.com.do/zola-restaurante-abre-sus-puertas-en-la-ciudad-colonial/"
+            },
+            {
+                "title": "Starter's Guide a la Ciudad Colonial de Santo Domingo The Best of DRhttps://thebestofdr.do › Travel",
+                "reason": "Points to The Best of DR travel guide for Ciudad Colonial, Santo Domingo, DR",
+                "url": "https://thebestofdr.do/travel/starters-guide-a-la-ciudad-colonial-de-santo-domingo-5-lugares-esenciales/"
+            },
+            {
+                "title": "Restaurantes de la Zona Colonial Diario Librehttps://www.diariolibre.com › tags › restaurantes\\-de\\-la\\-z...",
+                "reason": "Points to Diario Libre tag page for restaurants in Zona Colonial, DR",
+                "url": "https://www.diariolibre.com/tags/restaurantes-de-la-zona-colonial/64925"
+            }
+        ]
+    },
+    {
+        "metadata": {
+            "context": {
+                "query": "hoteles santo domingo",
+                "url": "https://www.google.com/search?q=hoteles+santo+domingo&num=50&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en",
+                "results": 283000
+            },
+            "result": {
+                "success": true,
+                "urls_found": 10,
+                "error": null,
+                "error_details": null
+            }
+        },
+        "urls": [
+            {
+                "title": "Busca hoteles en Santo Domingo Booking.com",
+                "reason": "Links to a hotel booking site with listings in Santo Domingo",
+                "url": "https://www.booking.com/city/do/santo-domingo.es.html"
+            },
+            {
+                "title": "santo domingo este hotels - Búsqueda de hoteles de ... - Google",
+                "reason": "Links to Google's hotel search for Santo Domingo Este",
+                "url": "https://www.google.com.do/travel/hotels/santo-domingo-este-hotels"
+            },
+            {
+                "title": "Hoteles en El Malecón, Santo Domingo. - Booking.com",
+                "reason": "Links to a hotel booking site with listings in the Malecon area of Santo Domingo",
+                "url": "https://www.booking.com/district/do/santo-domingo/maleconarea.es.html"
+            },
+            {
+                "title": "jw marriott - Santo Domingo Blue Mall",
+                "reason": "Links to the JW Marriott in the Blue Mall of Santo Domingo",
+                "url": "https://bluemall.com.do/jw-marriot/"
+            },
+            {
+                "title": "Hotel Santo Domingo Malecon Republica Dominicana Colonial Tour and Travel",
+                "reason": "Links to a tour operator with hotel information in Santo Domingo",
+                "url": "https://www.colonialtours.com/hotelsantodomingo.htm"
+            },
+            {
+                "title": "Hoteles en Santo Domingo, Republica Dominicana Colonial Tour and Travel",
+                "reason": "Links to a tour operator with hotel information in Santo Domingo",
+                "url": "https://www.colonialtours.com/hotelsd.htm"
+            },
+            {
+                "title": "Hotel Napolitano Hotel Napolitano",
+                "reason": "Links to the Hotel Napolitano in Santo Domingo",
+                "url": "https://napolitano.do/"
+            },
+            {
+                "title": "Barceló Santo Domingo ▻ Hotel en República Dominicana - Barcelo",
+                "reason": "Links to the Barceló Santo Domingo hotel",
+                "url": "https://www.barcelo.com/es-do/barcelo-santo-domingo/"
+            },
+            {
+                "title": "HOTELES en Santo Domingo - Páginas Amarillas",
+                "reason": "Links to a business directory with hotel listings in Santo Domingo",
+                "url": "https://paginasamarillas.com.do/es/business/search/santo-domingo/c/hoteles"
+            },
+            {
+                "title": "Hoteles Santo Domingo República Dominicana edestinos.com.do",
+                "reason": "Links to a hotel booking site with listings in Santo Domingo",
+                "url": "https://www.edestinos.com.do/hoteles/ci/sdq/hoteles-santo-domingo"
+            }
+        ]
+    },
+    {
+        "metadata": {
+            "context": {
+                "query": "unknown",
+                "url": "https://www.google.com/search?q=servicios+turisticos+punta+cana&num=50&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en",
+                "results": 0
+            },
+            "result": {
+                "success": false,
+                "urls_found": 0,
+                "error": "ExtractionError",
+                "error_details": "Invalid array structure in LLM response"
+            }
+        },
+        "urls": []
     }
 ]
