@@ -46,7 +46,7 @@ Our solution transforms this into an automated, intelligent process - what used 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/ai-powered-business-crawler.git
+   git clone https://github.com/Mr-Anas608/ai_powered_bussineses_data_crawler.git
    cd ai-powered-business-crawler
    ```
 
