@@ -27,8 +27,8 @@ import asyncio
 import logging
 import traceback
 from typing import Dict, List, Any, Optional, Union
-from dataclasses import dataclass, field
-from urllib.parse import quote_plus, urlencode, urlparse
+from dataclasses import dataclass
+from urllib.parse import urlencode, urlparse
 
 # Add project root to Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

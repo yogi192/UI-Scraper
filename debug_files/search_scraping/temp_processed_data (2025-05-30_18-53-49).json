@@ -1,9 +1,0 @@
-[
-    {
-        "https://lazybuguru.lt/": {
-            "message": "Scraping failed due to unexpected error",
-            "error": "cannot access local variable 'raw_html' where it is not associated with a value",
-            "success": false
-        }
-    }
-]

@@ -157,7 +157,7 @@ class LLMDataExtractor:
         self.schema_type = schema_type
         
         logger.info(f"Initialized LLMDataExtractor with {len(input_data_list)} input items")
-        logger.info(f"Schema type: {schema_type}")
+     
 
     def _create_standardized_error_response(
         self, 
@@ -236,7 +236,7 @@ class LLMDataExtractor:
         Raises:
             Exception: Re-raises unexpected exceptions after logging
         """
-        logger.debug(f"Starting direct API extraction for URL: {source_url}")
+        logger.debug(f"Starting direct API extraction for URL: '{source_url}'")
         
         try:
             # Make async API call to LLM service
@@ -367,17 +367,6 @@ class LLMDataExtractor:
                     error_message = f"Unexpected extraction error: {str(extraction_error)}"
                     logger.error(error_message)
                     logger.debug(f"Extraction error traceback: {traceback.format_exc()}")
-                    
-                    # Retry logic for unexpected errors
-                    if attempt_number < self.extraction_config.max_retry_attempts:
-                        retry_delay = self._calculate_retry_delay(attempt_number)
-                        logger.info(
-                            f"Retrying after error in {retry_delay:.1f}s "
-                            f"(attempt {attempt_number + 1}/{self.extraction_config.max_retry_attempts})"
-                        )
-                        await asyncio.sleep(retry_delay)
-                        continue
-                        
                     return self._create_standardized_error_response(error_message, source_url)
 
     async def _process_extraction_result(
@@ -442,23 +431,13 @@ class LLMDataExtractor:
             return "metadata" in data and "entities" in data
         else:  # search schema
             return "metadata" in data and "urls" in data
+# Add this helper method to check success
+    def _is_successful(self, result: Dict[str, Any]) -> bool:
+        """Check if extraction result indicates success"""
+        metadata = result.get('metadata', {})
+        result_info = metadata.get('result', {})
+        return result_info.get('success', False)
 
-    def _calculate_retry_delay(self, attempt_number: int) -> float:
-        """
-        Calculate retry delay with optional exponential backoff.
-        
-        Args:
-            attempt_number: Current attempt number (0-based)
-            
-        Returns:
-            Delay in seconds before next retry attempt
-        """
-        base_delay = self.extraction_config.retry_delay_seconds
-        
-        if self.extraction_config.enable_exponential_backoff:
-            return base_delay * (2 ** attempt_number)
-        else:
-            return base_delay * (attempt_number + 1)
 
     async def _process_extraction_batch(
         self, 
@@ -466,63 +445,33 @@ class LLMDataExtractor:
         extraction_method: str
     ) -> List[Dict[str, Any]]:
         """
-        Process a batch of data items using the specified extraction method.
-        
-        Args:
-            data_batch: List of data items to process
-            extraction_method: Extraction method ('direct' or 'crawl4ai')
-            
-        Returns:
-            List of extraction results (one per input item)
+        Process batch with automatic method fallback
         """
-        extraction_tasks = []
+        async def process_item(data_item: Dict[str, Any]) -> Dict[str, Any]:
+            """Process single item with fallback logic"""
+            source_url = next(iter(data_item.keys())) if data_item else "unknown"
+            
+            # First try with primary method
+            if extraction_method == 'crawl4ai':
+                result = await self._extract_via_crawl4ai(data_item)
+                if self._is_successful(result):
+                    return result
+                else:
+                    logger.warning(f"❌ Crawl4ai method failed for {source_url}. Trying direct API...")
+                    return await self._extract_via_direct_api(str(data_item), source_url)
+            else:  # direct method
         
-        if extraction_method == 'crawl4ai':
-            for data_item in data_batch:
-                extraction_tasks.append(self._extract_via_crawl4ai(data_item))
-                
-        elif extraction_method == 'direct':
-            for data_item in data_batch:
-                # Extract URL and content for direct API method
-                source_url = next(iter(data_item.keys())) if data_item else "unknown"
-                content_text = self._extract_content_from_data_item(data_item, source_url)
-                extraction_tasks.append(self._extract_via_direct_api(content_text, source_url))
-        else:
-            raise ValueError(f"Unsupported extraction method: {extraction_method}")
+                result = await self._extract_via_direct_api(str(data_item), source_url)
+                if self._is_successful(result):
+                    return result
+                else:
+                    logger.warning(f"❌ Direct API failed for {source_url}. Trying Crawl4ai...")
+                    return await self._extract_via_crawl4ai(data_item)
         
-        return await asyncio.gather(*extraction_tasks)
+        # Process all items concurrently
+        tasks = [process_item(item) for item in data_batch]
+        return await asyncio.gather(*tasks)
 
-    def _extract_content_from_data_item(self, data_item: Dict[str, Any], source_url: str) -> str:
-        """
-        Extract content text from data item for direct API processing.
-        
-        Args:
-            data_item: Data item dictionary
-            source_url: Source URL key
-            
-        Returns:
-            Content text for LLM processing
-        """
-        if not data_item:
-            return ''
-        
-        item_data = data_item.get(source_url, {})
-        
-        # Try different content fields based on common patterns
-        content_fields = [
-            'markdown/cleaned_html',
-            'content',
-            'text',
-            'html',
-            'body'
-        ]
-        
-        for field in content_fields:
-            if field in item_data and item_data[field]:
-                return str(item_data[field])
-        
-        # If no standard fields, try to convert the whole item to string
-        return str(item_data) if item_data else ''
 
     async def execute_data_extraction(
         self, 

@@ -2,10 +2,1516 @@
     {
         "metadata": {
             "source": {
+                "name": "Hotel Toachi - Santo Domingo",
+                "url": "http://www.hoteltoachi.com/",
+                "type": "Hotel",
+                "summary": "Website for Hotel Toachi, located in Santo Domingo. It provides information about the hotel, events, and booking options."
+            },
+            "result": {
+                "success": false,
+                "entities_found": 0,
+                "error": "GeoFiltered",
+                "error_details": "The entity found (Hotel Toachi) is located in Santo Domingo, Ecuador, based on the address (Av. Quito) and phone number format, and therefore does not meet the Dominican Republic geographic requirement."
+            },
+            "relevant_urls": []
+        },
+        "entities": []
+    },
+    {
+        "metadata": {
+            "source": {
+                "name": "Las webs de Banca más visitadas en República Dominicana 2025 | Webs en tendencia",
+                "url": "https://es.semrush.com/trending-websites/do/banking",
+                "type": "Website Ranking",
+                "summary": "This page from Semrush lists the most visited banking websites in the Dominican Republic for April 2025, providing traffic statistics but no detailed contact information for the listed domains."
+            },
+            "result": {
+                "success": false,
+                "entities_found": 0,
+                "error": "NoEntitiesFound",
+                "error_details": "No entities found with sufficient data (>= 50% completeness) to meet the extraction criteria. The source provides a list of websites with traffic data but lacks physical addresses, phone numbers, hours, ratings, or locations."
+            },
+            "relevant_urls": [
+                {
+                    "title": "popularenlinea.com",
+                    "reason": "DR bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/popularenlinea.com/overview/?source=trending-websites"
+                },
+                {
+                    "title": "banreservas.com",
+                    "reason": "DR bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/banreservas.com/overview/?source=trending-websites"
+                },
+                {
+                    "title": "bpd.com.do",
+                    "reason": "DR bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/bpd.com.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "banreservas.com.do",
+                    "reason": "DR bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/banreservas.com.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "cronista.com",
+                    "reason": "News website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/cronista.com/overview/?source=trending-websites"
+                },
+                {
+                    "title": "scotiabank.com",
+                    "reason": "International bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/scotiabank.com/overview/?source=trending-websites"
+                },
+                {
+                    "title": "prousuario.gob.do",
+                    "reason": "DR government consumer protection website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/prousuario.gob.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "bancentral.gov.do",
+                    "reason": "DR Central Bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/bancentral.gov.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "wise.com",
+                    "reason": "International money transfer service website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/wise.com/overview/?source=trending-websites"
+                },
+                {
+                    "title": "promerica.com.do",
+                    "reason": "DR bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/promerica.com.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "apap.com.do",
+                    "reason": "DR bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/apap.com.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "infodolar.com.do",
+                    "reason": "Currency information website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/infodolar.com.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "bsc.com.do",
+                    "reason": "DR bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/bsc.com.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "westernunion.com",
+                    "reason": "International money transfer service website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/westernunion.com/overview/?source=trending-websites"
+                },
+                {
+                    "title": "banesco.com.do",
+                    "reason": "DR bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/banesco.com.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "sb.gob.do",
+                    "reason": "DR banking regulator website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/sb.gob.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "transunion.com.do",
+                    "reason": "Credit bureau website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/transunion.com.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "desjardins.com",
+                    "reason": "International financial group website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/desjardins.com/overview/?source=trending-websites"
+                },
+                {
+                    "title": "acap.com.do",
+                    "reason": "DR bank website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/acap.com.do/overview/?source=trending-websites"
+                },
+                {
+                    "title": "xe.com",
+                    "reason": "Currency exchange website listed under DR banking traffic; lacks detailed contact information on this page.",
+                    "url": "https://www.semrush.com/website/xe.com/overview/?source=trending-websites"
+                }
+            ]
+        },
+        "entities": []
+    },
+    {
+        "metadata": {
+            "source": {
+                "name": "Las webs de Inmobiliaria más visitadas en República Dominicana 2025 | Webs en tendencia",
+                "url": "https://es.semrush.com/trending-websites/do/real-estate",
+                "type": "Website Ranking/Analytics",
+                "summary": "This page from Semrush lists the most visited real estate websites in the Dominican Republic for April 2025, providing traffic metrics and source information for each domain."
+            },
+            "result": {
+                "success": false,
+                "entities_found": 0,
+                "error": "NoEntitiesFound",
+                "error_details": "The source content lists websites with traffic data, but lacks the physical address, phone, rating, hours, and location information required by the schema and completeness rules for physical businesses. No entities met the minimum completeness threshold (4/8 fields) or the required fields (Name, Address, Category)."
+            },
+            "relevant_urls": [
+                {
+                    "title": "Most Visited Real Estate Websites in Dominican Republic",
+                    "reason": "This is the source page containing the list of websites relevant to the DR real estate market, although it lacks the physical business data required.",
+                    "url": "https://es.semrush.com/trending-websites/do/real-estate"
+                }
+            ]
+        },
+        "entities": []
+    },
+    {
+        "metadata": {
+            "source": {
+                "name": "ExtractionError",
+                "url": "https://es.semrush.com/trending-websites/do/education",
+                "type": "Error",
+                "summary": "Data extraction failed: Invalid array structure in LLM response"
+            },
+            "result": {
+                "success": false,
+                "entities_found": 0,
+                "error": "ExtractionError",
+                "error_details": "Invalid array structure in LLM response"
+            },
+            "relevant_urls": []
+        },
+        "entities": []
+    },
+    {
+        "metadata": {
+            "source": {
+                "name": "Restaurantes en República Dominicana 2025",
+                "url": "https://www.yelu.do/category/restaurantes",
+                "type": "Business Directory",
+                "summary": "Directory listing of restaurants and related food businesses in the Dominican Republic with addresses and phone numbers."
+            },
+            "result": {
+                "success": true,
+                "entities_found": 20,
+                "error": null,
+                "error_details": null
+            },
+            "relevant_urls": []
+        },
+        "entities": [
+            {
+                "name": "Domino´s Pizza",
+                "address": "Av G Godoy 125, La Vega, República Dominicana",
+                "phone": "(809) 242-1515",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Panadería-Pizzería Las Palmas",
+                "address": "C Batista 1, La Vega, República Dominicana",
+                "phone": "(809) 242-1212",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Boli Boli Restaurant",
+                "address": "Ave La Confluencia 1, Jarabacoa 41000, República Dominicana",
+                "phone": "(809) 574-2164",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Algusto",
+                "address": "C/ Turey, el Cacique, Santo Domingo, República Dominicana",
+                "phone": "(809) 508-1730",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Churchs Chicken",
+                "address": "Plaza Royal, Local 201, Av.M Gomez, esq.J Contreras, Santo Domingo, República Dominicana",
+                "phone": "(809) 221-3283",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Pizza Hut",
+                "address": "C Convención L-B1-1, Puerto Plata, República Dominicana",
+                "phone": "(809) 320-2000",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "DiversionDominicana",
+                "address": "Av. Franco bido S/n Edif. J & G, Nibaje, Santiago, República Dominicana",
+                "phone": "(809) 839-1243",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Mediterráneo Ristorante Gourmet",
+                "address": "Ave. Enriquillo #52, Los Cacicazgos, Sto.Dgo. RD, Santo Domingo, República Dominicana",
+                "phone": "(849) 936-3900",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Panda Express",
+                "address": "Av.27 de febrero No.237, Ens. Naco, Santo Domingo, República Dominicana",
+                "phone": "(809) 566-1566",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "El Mesón de Daysi",
+                "address": "J de Morfa 88, Santo Domingo, República Dominicana",
+                "phone": "(809) 333-6797",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Mirian Buffets",
+                "address": "Juan XIII 18, Santo Domingo, República Dominicana",
+                "phone": "(809) 540-0921",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Deco-Buffet",
+                "address": "Calle 2B, No.5 Ens.Paraiso, Santo Domingo, República Dominicana",
+                "phone": "(809) 542-6556",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "El Mesón de la Cava",
+                "address": "Ave. Mirador del Sur 1, Santo Domingo, República Dominicana",
+                "phone": "(809) 533-4840",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "El Meson de la Cava",
+                "address": "Av. Mirador del Sur, Santo Domingo, República Dominicana",
+                "phone": "(809) 533-2818",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Restaurant Vesuvio",
+                "address": "Av. G Washington 523, Santo Domingo, República Dominicana",
+                "phone": "(809) 221-3000",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Ana Lebrón Linea Gourmet",
+                "address": "M Simón 6 A, Santo Domingo, República Dominicana",
+                "phone": "(809) 412-0161",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Ana Lebrón Linea Gourmet",
+                "address": "G M Ricart 126, Santo Domingo, República Dominicana",
+                "phone": "(809) 412-0161",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Caffe Milano",
+                "address": "Av. Tiradentes 11, Santo Domingo, República Dominicana",
+                "phone": "(809) 540-3000",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro De Comida Empresarial",
+                "address": "2-B No 5, Paraíso, Santo Domingo, República Dominicana",
+                "phone": "(809) 544-1343",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Culinary Consulting, S A",
+                "address": "Zafiro 9, Santo Domingo, República Dominicana",
+                "phone": "(809) 530-8979",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            }
+        ]
+    },
+    {
+        "metadata": {
+            "source": {
+                "name": "Servicio de Vehículos en República Dominicana 2025",
+                "url": "/category/servicio_de_veh%C3%ADculos",
+                "type": "Business Directory",
+                "summary": "Directory listing businesses offering vehicle services in the Dominican Republic, including mechanics, parts suppliers, and taxis. The page shows a partial list from a total of 1,668 companies found in this category."
+            },
+            "result": {
+                "success": true,
+                "entities_found": 19,
+                "error": null,
+                "error_details": null
+            },
+            "relevant_urls": []
+        },
+        "entities": [
+            {
+                "name": "Sam’s transfer DR",
+                "address": "Calle castillo Márquez, La Romana",
+                "phone": "(829) 910-0689",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Fresco Auto Aire",
+                "address": "Cno. de Buena Vista 102, Santiago de los Caballeros",
+                "phone": "(829) 979-5398",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "AUTOS & MECANICA R.S. S.R.L.",
+                "address": "C.PROYECTO 5 DETRÁS DE ONAPI PRÓXIMO A INTEC, LOS JARDINES DEL NORTE, Santo Domingo",
+                "phone": "(829) 893-1770",
+                "website": null,
+                "category": "Service",
+                "rating": "5.01 Reseña",
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "WHATS TAXIS",
+                "address": "CALLE JACINTO DE LOS SANTOS ESQ. CALLE TERMINAL ESSO, LOS MAMEYES, SANTO DOMINGO ESTE",
+                "phone": "(829) 489-0500",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "FURGONES DEL CARIBE",
+                "address": "Aut Duarte Km 18 1/2 Sd, Santo Domingo",
+                "phone": "(809) 560-7626",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "MÚSICA DEL CIBAO, C. POR A",
+                "address": "Av San Martín No. 125, Villa Juana, Santo Domingo",
+                "phone": "(809) 689-6466",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "POCHY IEROMAZZO. S.A",
+                "address": "Av 27 De Febrero Esq. Bartolomé Colón, Plaza Gorge, Ens. La Julia, Santiago",
+                "phone": "(809) 241-3358",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Clínica De Frenos",
+                "address": "Av Rivas 127, La Vega",
+                "phone": "(809) 573-7977",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Listin Autos",
+                "address": "Calle Cayetano Rodriguez #163. Suite 1-A, Gazcue, Santo Domingo",
+                "phone": "(809) 616-1250",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Indufricción, S.R.L",
+                "address": "Ave.27 de Ferero No.6, Villa Francisca, Santo Domingo",
+                "phone": "(809) 685-2992",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Claro Taxi",
+                "address": "Av Mexico 40, Santo Domingo",
+                "phone": "(809) 597-7777",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Mundo Vidrio",
+                "address": "Av 27 de Febrero 78, Santiago",
+                "phone": "(809) 575-1376",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Repuestos y Servicios Fausto",
+                "address": "Autopista Duarte km 4 1/2, Frente a la Peugeot, Santiago",
+                "phone": "(809) 570-6158",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Paulino Sierra Express Auto Import SRL",
+                "address": "CALL PELONA 9 AROYO HONDO III, Santo Domingo",
+                "phone": "(829) 580-2130",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Comercial Santana, S. R. L.",
+                "address": "M Montez 20, Santo Domingo",
+                "phone": "(809) 688-5151",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Jaime Méndez Sucs, C por A",
+                "address": "Av San Martín 98, Santo Domingo",
+                "phone": "(809) 565-8861",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Leony Truck Parts",
+                "address": "Prol Av Independencia 33, Santo Domingo",
+                "phone": "(809) 531-6880",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Machuca Racing Team",
+                "address": "Av Ch Summer 13, Santo Domingo",
+                "phone": "(809) 565-5393",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Payless Car Rental",
+                "address": "Aut L Américas Km 22 1/2, Santo Domingo",
+                "phone": "(809) 549-0492",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            }
+        ]
+    },
+    {
+        "metadata": {
+            "source": {
+                "name": "Médicos y Clínicos en República Dominicana 2025",
+                "url": "https://www.yelu.do/category/m%C3%A9dicos_y_cl%C3%ADnicos",
+                "type": "Business Directory",
+                "summary": "Directory listing businesses offering medical and clinical services across various cities in the Dominican Republic."
+            },
+            "result": {
+                "success": true,
+                "entities_found": 17,
+                "error": null,
+                "error_details": null
+            },
+            "relevant_urls": [
+                {
+                    "title": "Vitae Health Profile",
+                    "reason": "Entity rejected due to insufficient data completeness; profile page may contain more details.",
+                    "url": "https://www.yelu.do/company/148612/Vitae_Health"
+                },
+                {
+                    "title": "Laboratorio de Patología y Biología Molecular Dr. Bolívar García Profile",
+                    "reason": "Entity rejected due to insufficient data completeness (missing explicit city); profile page may contain more details.",
+                    "url": "https://www.yelu.do/company/147879/Laboratorio_de_Patolog%C3%ADa_y_Biolog%C3%ADa_Molecular_Dr_Bol%C3%ADvar_Garc%C3%ADa"
+                },
+                {
+                    "title": "Laboratorio De Patología-Biología Molecular Dr Bolívar García Profile",
+                    "reason": "Entity rejected due to insufficient data completeness (missing explicit city); profile page may contain more details.",
+                    "url": "https://www.yelu.do/company/133803/Laboratorio_De_Patolog%C3%ADa_Biolog%C3%ADa_Molecular_Dr_Bol%C3%ADvar_Garc%C3%ADa"
+                },
+                {
+                    "title": "Médicos y Clínicos - Page 2",
+                    "reason": "Link to the next page of the directory listing.",
+                    "url": "https://www.yelu.do/category/m%C3%A9dicos_y_cl%C3%ADnicos/2"
+                }
+            ]
+        },
+        "entities": [
+            {
+                "name": "Laboratorio De Patología- Biología Molecular Dr Bolívar García",
+                "address": "Ave. Ortega y Gasset No. 100, Santo Domingo, República Dominicana",
+                "phone": "(809) 227-7527",
+                "website": null,
+                "category": "Service",
+                "rating": "5.03 Reseñas",
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Custodio G, Miguel",
+                "address": "F Richiez 24, La Romana, República Dominicana",
+                "phone": "(809) 550-3271",
+                "website": null,
+                "category": "Service",
+                "rating": "5.02 Reseñas",
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Núñez Hernández Medical Center (Centro Médico Núñez Hernández)",
+                "address": "C. Mella 48, Cotuí 43000, Cotui, República Dominicana",
+                "phone": "(809) 585-2901",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Laboratorio de Paternidad y Patologia Dr. Bolivar Garcia",
+                "address": "Centro Medico Dr. Bournigal, Puerto Plata, República Dominicana",
+                "phone": "(809) 586-6985",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Médico Reumatólogo - Dra. Ingrit Mercedes",
+                "address": "Av. Juan XXIII # 115. Clínica Dr. Perozo. La Altagracia – Higuey, Rep. Dom., República Dominicana",
+                "phone": "(809) 746-3825",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Laboratorio De Patología Dr Bolívar García",
+                "address": "J Dumit, Santiago, República Dominicana",
+                "phone": "(809) 583-6232",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Refugio Colosenses 3 14",
+                "address": "La Cienaga, Santiago, República Dominicana",
+                "phone": "(829) 771-4592",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Cedisa San Juan",
+                "address": "C de Leones 63, San Juan de la Maguana, República Dominicana",
+                "phone": "(809) 557-5712",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "CEMEDI",
+                "address": "J Cabrera 70, Santo Domingo, República Dominicana",
+                "phone": "(809) 699-2786",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro Diagnostico Especializado Cedisa E Imágenes Cedisa",
+                "address": "P I Espaillat 55, Santo Domingo, República Dominicana",
+                "phone": "(809) 687-1103",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro Médico Integral II",
+                "address": "Carr Mella 1, Santo Domingo, República Dominicana",
+                "phone": "(809) 788-6336",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro Médico Dr Batista",
+                "address": "C de Lora 35, Santiago, República Dominicana",
+                "phone": "(809) 233-7070",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro Médico La Altagracia-Dr Eduardo Martínez",
+                "address": "Av Los Jazmines 213, Santiago, República Dominicana",
+                "phone": "(809) 724-6010",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro Médico Dr Pérez",
+                "address": "G F Deligne 31-B, Nagua, República Dominicana",
+                "phone": "(809) 584-3710",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro Materno Infantil y Especialidades Bonao",
+                "address": "Duarte 427, Bonao, República Dominicana",
+                "phone": "(809) 525-7537",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Clínica La Concepción",
+                "address": "B Gómez 5, La Vega, República Dominicana",
+                "phone": "(809) 573-0022",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            }
+        ]
+    },
+    {
+        "metadata": {
+            "source": {
+                "name": "Centros Comerciales en República Dominicana 2025",
+                "url": "https://www.yelu.do/category/centros_comerciales",
+                "type": "Business Directory Listing",
+                "summary": "This page provides a list of shopping malls and commercial centers located in the Dominican Republic, extracted from the Yelu Dominicana business directory. It includes contact details like address and phone number for each listing."
+            },
+            "result": {
+                "success": true,
+                "entities_found": 20,
+                "error": null,
+                "error_details": null
+            },
+            "relevant_urls": [
+                {
+                    "title": "Centros Comerciales page 2",
+                    "reason": "Contains more entities from the list of 343 companies.",
+                    "url": "https://www.yelu.do/category/centros_comerciales/2"
+                }
+            ]
+        },
+        "entities": [
+            {
+                "name": "Diamond Plaza",
+                "address": "Av Los Próceres 38, Santo Domingo",
+                "phone": "(809) 566-0265",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Giron Jimenez, Raul Alejandro",
+                "address": "Av 25 de Febrero 622, Santo Domingo",
+                "phone": "(829) 766-2560",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro Comercial Unicentro Plaza",
+                "address": "Av A Lincoln 406, Santo Domingo",
+                "phone": "(809) 541-8232",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Plaza Taveras Center",
+                "address": "Carr Mella 1, Higuey",
+                "phone": "(809) 746-1140",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Intercentro Trade Center, C A",
+                "address": "Av L de Vega 27, Santo Domingo",
+                "phone": "(809) 549-5815",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Novo-Centro",
+                "address": "Av L de Vega 27, Santo Domingo",
+                "phone": "(809) 549-5815",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Plaza Imán, C x A",
+                "address": "Av España 70, Santo Domingo",
+                "phone": "(809) 414-3444",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Acrópolis Center (Condominio Centro Comercial Acropolis)",
+                "address": "W Churchill, Santo Domingo",
+                "phone": "(809) 955-2020",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Palma Real Shopping Village",
+                "address": "Carr Cortecito 1, Higuey",
+                "phone": "(809) 552-8725",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Plaza Lucitania",
+                "address": "Las Galeras 1, Samana",
+                "phone": "(809) 538-0093",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Plaza.Com",
+                "address": "Av Duarte 424, Santo Domingo",
+                "phone": "(809) 937-8539",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Restaurante BI JH 2 0",
+                "address": "Playa Bávaro, Higuey",
+                "phone": "(809) 552-6011",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Sierra Parima, S A",
+                "address": "Carr Cortecito 1, Higuey",
+                "phone": "(809) 552-8725",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Acercom",
+                "address": "Alexander Fleming 108, Santo Domingo",
+                "phone": "(809) 338-0083",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "AC Video",
+                "address": "Av Helios 139, Santo Domingo",
+                "phone": "(809) 412-8634",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Administración de Condominios Malecón Center",
+                "address": "Av G Washington, Santo Domingo",
+                "phone": "(809) 412-7441",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Administración del Consorcio de Propietarios de Condominios de Plaza Central",
+                "address": "Av 27 de Febrero, Santo Domingo",
+                "phone": "(809) 872-0353",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Adrián Plaza",
+                "address": "S Bolívar 8, Santo Domingo",
+                "phone": "(809) 599-7503",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Agua Liana",
+                "address": "Av C De Gaulle 17, Santo Domingo",
+                "phone": "(809) 701-4745",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Almonte P, Lissette M",
+                "address": "14 No 1, L Girasoles I, Santo Domingo",
+                "phone": "(809) 331-5214",
+                "website": null,
+                "category": "Business",
+                "rating": null,
+                "hours": null,
+                "location": null
+            }
+        ]
+    },
+    {
+        "metadata": {
+            "source": {
+                "name": "Restaurantes en República Dominicana 2025",
+                "url": "https://www.yelu.do/category/restaurantes",
+                "type": "Site category",
+                "summary": "Directory listing businesses, specifically restaurants, located in the Dominican Republic."
+            },
+            "result": {
+                "success": true,
+                "entities_found": 18,
+                "error": null,
+                "error_details": null
+            },
+            "relevant_urls": [
+                {
+                    "title": "Restaurantes in Dominican Republic - Page 2",
+                    "reason": "Pagination link to the next page of restaurant listings.",
+                    "url": "https://www.yelu.do/category/restaurantes/2"
+                },
+                {
+                    "title": "Restaurantes in Dominican Republic - Page 3",
+                    "reason": "Pagination link to the next page of restaurant listings.",
+                    "url": "https://www.yelu.do/category/restaurantes/3"
+                },
+                {
+                    "title": "Restaurantes in Dominican Republic - Page 97",
+                    "reason": "Pagination link to the last page of restaurant listings.",
+                    "url": "https://www.yelu.do/category/restaurantes/97"
+                },
+                {
+                    "title": "Restaurantes in Santo Domingo",
+                    "reason": "City filter for restaurant listings in Santo Domingo.",
+                    "url": "https://www.yelu.do/category/restaurantes/city:Santo_Domingo"
+                },
+                {
+                    "title": "Restaurantes in Santiago",
+                    "reason": "City filter for restaurant listings in Santiago.",
+                    "url": "https://www.yelu.do/category/restaurantes/city:Santiago"
+                },
+                {
+                    "title": "Restaurantes in San Pedro de Macoris",
+                    "reason": "City filter for restaurant listings in San Pedro de Macoris.",
+                    "url": "https://www.yelu.do/category/restaurantes/city:San_Pedro_de_Macoris"
+                },
+                {
+                    "title": "Restaurantes in La Romana",
+                    "reason": "City filter for restaurant listings in La Romana.",
+                    "url": "https://www.yelu.do/category/restaurantes/city:La_Romana"
+                },
+                {
+                    "title": "Restaurantes in San Cristobal",
+                    "reason": "City filter for restaurant listings in San Cristobal.",
+                    "url": "https://www.yelu.do/category/restaurantes/city:San_Cristobal"
+                },
+                {
+                    "title": "Restaurantes in Puerto Plata",
+                    "reason": "City filter for restaurant listings in Puerto Plata.",
+                    "url": "https://www.yelu.do/category/restaurantes/city:Puerto_Plata"
+                },
+                {
+                    "title": "Restaurantes in San Francisco de Macoris",
+                    "reason": "City filter for restaurant listings in San Francisco de Macoris.",
+                    "url": "https://www.yelu.do/category/restaurantes/city:San_Francisco_de_Macoris"
+                },
+                {
+                    "title": "Restaurantes in Higuey",
+                    "reason": "City filter for restaurant listings in Higuey.",
+                    "url": "https://www.yelu.do/category/restaurantes/city:Higuey"
+                }
+            ]
+        },
+        "entities": [
+            {
+                "name": "Domino´s Pizza",
+                "address": "Av G Godoy 125, La Vega, República Dominicana",
+                "phone": "(809) 242-1515",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Panadería-Pizzería Las Palmas",
+                "address": "C Batista 1, La Vega, República Dominicana",
+                "phone": "(809) 242-1212",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Boli Boli Restaurant",
+                "address": "Ave La Confluencia 1, Jarabacoa 41000, República Dominicana",
+                "phone": "(809) 574-2164",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Algusto",
+                "address": "C/ Turey, el Cacique, santo domingo, República Dominicana",
+                "phone": "(809) 508-1730",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Churchs Chicken",
+                "address": "Plaza Royal, Local 201, Av.M Gomez, esq.J Contreras, Santo Domingo, República Dominicana",
+                "phone": "(809) 221-3283",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Pizza Hut",
+                "address": "C Convención L-B1-1, Puerto Plata, República Dominicana",
+                "phone": "(809) 320-2000",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "DiversionDominicana",
+                "address": "Av. Franco bido S/n Edif. J & G, Nibaje, Santiago de los Caballeros, Santiago, República Dominicana",
+                "phone": "(809) 839-1243",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Mediterráneo Ristorante Gourmet",
+                "address": "Ave. Enriquillo #52, Los Cacicazgos, Sto.Dgo. RD, Santo Domingo, República Dominicana",
+                "phone": "(849) 936-3900",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Panda Express",
+                "address": "Av.27 de febrero No.237, Ens. Naco, Santo Domingo, República Dominicana",
+                "phone": "(809) 566-1566",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "El Mesón de Daysi",
+                "address": "J de Morfa 88, Santo Domingo, República Dominicana",
+                "phone": "(809) 333-6797",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Mirian Buffets",
+                "address": "Juan XIII 18, Santo Domingo, República Dominicana",
+                "phone": "(809) 540-0921",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Deco-Buffet",
+                "address": "Calle 2B, No.5 Ens.Paraiso, Santo Domingo, República Dominicana",
+                "phone": "(809) 542-6556",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "El Mesón de la Cava",
+                "address": "Ave. Mirador del Sur 1, Santo Domingo, República Dominicana",
+                "phone": "(809) 533-4840",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Restaurant Vesuvio",
+                "address": "Av. G Washington 523, Santo Domingo, República Dominicana",
+                "phone": "(809) 221-3000",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Ana Lebrón Linea Gourmet",
+                "address": "M Simón 6 A, Santo Domingo, República Dominicana",
+                "phone": "(809) 412-0161",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Caffe Milano",
+                "address": "Av. Tiradentes 11, Santo Domingo, República Dominicana",
+                "phone": "(809) 540-3000",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro De Comida Empresarial",
+                "address": "2-B No 5, Paraíso, Santo Domingo, República Dominicana",
+                "phone": "(809) 544-1343",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Culinary Consulting, S A",
+                "address": "Zafiro 9, Santo Domingo, República Dominicana",
+                "phone": "(809) 530-8979",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            }
+        ]
+    },
+    {
+        "metadata": {
+            "source": {
+                "name": "Restaurantes en República Dominicana 2025",
+                "url": "https://www.yelu.do/category/restaurantes",
+                "type": "Directory",
+                "summary": "Directory listing businesses in Dominican Republic, specifically focusing on restaurants on this page. Provides basic contact information like address and phone number."
+            },
+            "result": {
+                "success": true,
+                "entities_found": 20,
+                "error": null,
+                "error_details": null
+            },
+            "relevant_urls": []
+        },
+        "entities": [
+            {
+                "name": "Domino´s Pizza",
+                "address": "Av G Godoy 125, La Vega, República Dominicana",
+                "phone": "(809) 242-1515",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Panadería-Pizzería Las Palmas",
+                "address": "C Batista 1, La Vega, República Dominicana",
+                "phone": "(809) 242-1212",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Boli Boli Restaurant",
+                "address": "Ave La Confluencia 1, Jarabacoa 41000, República Dominicana",
+                "phone": "(809) 574-2164",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Algusto",
+                "address": "C/ Turey, el Cacique, santo domingo, República Dominicana",
+                "phone": "(809) 508-1730",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Churchs Chicken",
+                "address": "Plaza Royal, Local 201, Av.M Gomez, esq.J Contreras, Santo Domingo, República Dominicana",
+                "phone": "(809) 221-3283",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Pizza Hut",
+                "address": "C Convención L-B1-1, Puerto Plata, República Dominicana",
+                "phone": "(809) 320-2000",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "DiversionDominicana",
+                "address": "Av. Franco bido S/n Edif. J & G, Nibaje, Santiago de los Caballeros, Santiago, República Dominicana",
+                "phone": "(809) 839-1243",
+                "website": null,
+                "category": "Attraction",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Mediterráneo Ristorante Gourmet",
+                "address": "Ave. Enriquillo #52, Los Cacicazgos, Sto.Dgo. RD, Santo Domingo, República Dominicana",
+                "phone": "(849) 936-3900",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Panda Express",
+                "address": "Av.27 de febrero No.237, Ens. Naco, Santo Domingo, República Dominicana",
+                "phone": "(809) 566-1566",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "El Mesón de Daysi",
+                "address": "J de Morfa 88, Santo Domingo, República Dominicana",
+                "phone": "(809) 333-6797",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Mirian Buffets",
+                "address": "Juan XIII 18, Santo Domingo, República Dominicana",
+                "phone": "(809) 540-0921",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Deco-Buffet",
+                "address": "Calle 2B, No.5 Ens.Paraiso, Santo Domingo, República Dominicana",
+                "phone": "(809) 542-6556",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "El Mesón de la Cava",
+                "address": "Ave. Mirador del Sur 1, Santo Domingo, República Dominicana",
+                "phone": "(809) 533-4840",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "El Meson de la Cava",
+                "address": "Av. Mirador del Sur, Santo Domingo, República Dominicana",
+                "phone": "(809) 533-2818",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Restaurant Vesuvio",
+                "address": "Av. G Washington 523, Santo Domingo, República Dominicana",
+                "phone": "(809) 221-3000",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Ana Lebrón Linea Gourmet",
+                "address": "M Simón 6 A, Santo Domingo, República Dominicana",
+                "phone": "(809) 412-0161",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Ana Lebrón Linea Gourmet",
+                "address": "G M Ricart 126, Santo Domingo, República Dominicana",
+                "phone": "(809) 412-0161",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Caffe Milano",
+                "address": "Av. Tiradentes 11, Santo Domingo, República Dominicana",
+                "phone": "(809) 540-3000",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Centro De Comida Empresarial",
+                "address": "2-B No 5, Paraíso, Santo Domingo, República Dominicana",
+                "phone": "(809) 544-1343",
+                "website": null,
+                "category": "Restaurant",
+                "rating": null,
+                "hours": null,
+                "location": null
+            },
+            {
+                "name": "Culinary Consulting, S A",
+                "address": "Zafiro 9, Santo Domingo, República Dominicana",
+                "phone": "(809) 530-8979",
+                "website": null,
+                "category": "Service",
+                "rating": null,
+                "hours": null,
+                "location": null
+            }
+        ]
+    },
+    {
+        "metadata": {
+            "source": {
                 "name": "DIRECTORIOS TELEFONICOS Y GUIAS en Republica Dominicana | Páginas Amarillas",
                 "url": "https://paginasamarillas.com.do/en/business/search/republica-dominicana/c/directorios-telefonicos-y-guias",
-                "type": "Business Directory",
-                "summary": "This page lists telephone directories and guides available in the Dominican Republic. It provides contact information and locations for businesses in this category."
+                "type": "Site category",
+                "summary": "This page lists businesses categorized under 'Directorios Telefónicos y Guías' (Telephone Directories and Guides) in the Dominican Republic, found on the Paginas Amarillas website."
             },
             "result": {
                 "success": true,
@@ -13,7 +1519,58 @@
                 "error": null,
                 "error_details": null
             },
-            "relevant_urls": []
+            "relevant_urls": [
+                {
+                    "title": "Places To Go DR",
+                    "reason": "Related website listing places and attractions in the DR.",
+                    "url": "https://placestogodr.com"
+                },
+                {
+                    "title": "Salud Online DO",
+                    "reason": "Related website focused on health-related businesses and services in the DR.",
+                    "url": "https://www.saludonline.com.do"
+                },
+                {
+                    "title": "Amcham Online DO",
+                    "reason": "Related website for the American Chamber of Commerce in the DR, likely listing member businesses.",
+                    "url": "https://amchamonline.com.do"
+                },
+                {
+                    "title": "URBE DO",
+                    "reason": "Related website likely focused on real estate or urban development businesses in the DR.",
+                    "url": "https://urbe.com.do"
+                },
+                {
+                    "title": "Automóviles in Santo Domingo",
+                    "reason": "Link to another category search result page on the same site for businesses in the specified category and location.",
+                    "url": "https://paginasamarillas.com.do/en/business/search/santo-domingo/c/automoviles"
+                },
+                {
+                    "title": "Hoteles in Santo Domingo",
+                    "reason": "Link to another category search result page on the same site for businesses in the specified category and location.",
+                    "url": "https://paginasamarillas.com.do/en/business/search/santo-domingo/c/hoteles"
+                },
+                {
+                    "title": "Abogados in Santo Domingo",
+                    "reason": "Link to another category search result page on the same site for businesses in the specified category and location.",
+                    "url": "https://paginasamarillas.com.do/en/business/search/santo-domingo/c/abogados"
+                },
+                {
+                    "title": "Cooperativas in Santo Domingo",
+                    "reason": "Link to another category search result page on the same site for businesses in the specified category and location.",
+                    "url": "https://paginasamarillas.com.do/en/business/search/santo-domingo/c/cooperativas"
+                },
+                {
+                    "title": "Automóviles / Repuestos in Santo Domingo",
+                    "reason": "Link to another category search result page on the same site for businesses in the specified category and location.",
+                    "url": "https://paginasamarillas.com.do/en/business/search/santo-domingo/c/automoviles-%3E-repuestos"
+                },
+                {
+                    "title": "Construcciones in Santo Domingo",
+                    "reason": "Link to another category search result page on the same site for businesses in the specified category and location.",
+                    "url": "https://paginasamarillas.com.do/en/business/search/santo-domingo/c/construcciones"
+                }
+            ]
         },
         "entities": [
             {
@@ -31,7 +1588,7 @@
             },
             {
                 "name": "Caribe Media, SA",
-                "address": "Av. John F. Kennedy, Viejo Arroyo Hondo, Distrito Nacional SD",
+                "address": "Av. John F. Kennedy, Galería 360, 2do Nivel, Local 109, Viejo Arroyo Hondo, Distrito Nacional SD",
                 "phone": "(809) 220-3100",
                 "website": "https://www.caribemedia.com.do",
                 "category": "Business",
@@ -39,28 +1596,28 @@
                 "hours": [
                     {
                         "day": "Monday",
-                        "opens": "08:00 am",
-                        "closes": "05:00 pm"
+                        "opens": "8AM",
+                        "closes": "6PM"
                     },
                     {
                         "day": "Tuesday",
-                        "opens": "08:00 am",
-                        "closes": "05:00 pm"
+                        "opens": "8AM",
+                        "closes": "6PM"
                     },
                     {
                         "day": "Wednesday",
-                        "opens": "08:00 am",
-                        "closes": "05:00 pm"
+                        "opens": "8AM",
+                        "closes": "6PM"
                     },
                     {
                         "day": "Thursday",
-                        "opens": "08:00 am",
-                        "closes": "05:00 pm"
+                        "opens": "8AM",
+                        "closes": "6PM"
                     },
                     {
                         "day": "Friday",
-                        "opens": "08:00 am",
-                        "closes": "05:00 pm"
+                        "opens": "8AM",
+                        "closes": "5PM"
                     }
                 ],
                 "location": {
@@ -89,116 +1646,5 @@
                 "location": null
             }
         ]
-    },
-    {
-        "metadata": {
-            "source": {
-                "name": "Hotel Toachi",
-                "url": "http://www.hoteltoachi.com/",
-                "type": "Hotel Website",
-                "summary": "Hotel Toachi is a hotel located in Santo Domingo, Ecuador (as inferred from the text mentioning Santo Domingo and the domain not being .do). The website provides information about the hotel, events, and contact details."
-            },
-            "result": {
-                "success": false,
-                "entities_found": 0,
-                "error": "GeoFiltered",
-                "error_details": "The hotel is located in Santo Domingo, Ecuador, not the Dominican Republic."
-            },
-            "relevant_urls": []
-        },
-        "entities": []
-    },
-    {
-        "metadata": {
-            "source": {
-                "name": "DIRECTORIOS TELEFÓNICOS Y GUIAS en Republica Dominicana | Páginas Amarillas",
-                "url": "https://paginasamarillas.com.do/en/business/search/republica-dominicana/c/directorios-telef%C3%B3nicos-y-guias",
-                "type": "Business Directory",
-                "summary": "This page lists telephone directories and guides available in the Dominican Republic. It provides contact information and locations for businesses in this category."
-            },
-            "result": {
-                "success": true,
-                "entities_found": 4,
-                "error": null,
-                "error_details": null
-            },
-            "relevant_urls": [
-                {
-                    "title": "View Map",
-                    "reason": "May contain additional location data for businesses in the Dominican Republic.",
-                    "url": "/en/business/search-map/republica-dominicana/directorios-telef%C3%B3nicos-y-guias"
-                },
-                {
-                    "title": "Cómo Anunciarte",
-                    "reason": "This page might provide information about Dominican businesses and how to get listed.",
-                    "url": "/en/info/about"
-                },
-                {
-                    "title": "Sugerir Negocio",
-                    "reason": "This page allows users to suggest businesses, potentially leading to more Dominican Republic business data.",
-                    "url": "https://paginasamarillas.com.do/es/suggest"
-                }
-            ]
-        },
-        "entities": [
-            {
-                "name": "Berry Dominicana",
-                "address": "Calle Paseo de los Locutores 41B, Quisqueya, Distrito Nacional SD",
-                "phone": null,
-                "website": null,
-                "category": "Business",
-                "rating": null,
-                "hours": null,
-                "location": null
-            },
-            {
-                "name": "Caribe Media, SA",
-                "address": "Av. John F. Kennedy, Viejo Arroyo Hondo, Distrito Nacional SD",
-                "phone": null,
-                "website": null,
-                "category": "Business",
-                "rating": null,
-                "hours": "Open 08:00 am - 5:00 pm",
-                "location": null
-            },
-            {
-                "name": "Inversiones Gonzalez Cano, SRL",
-                "address": "Av L De Vega 81, La Fe, Los Alcarrizos SD",
-                "phone": null,
-                "website": null,
-                "category": "Business",
-                "rating": null,
-                "hours": null,
-                "location": null
-            },
-            {
-                "name": "Rodriguez, Victor F",
-                "address": "El Conde 403, Los Prados, Distrito Nacional SD",
-                "phone": null,
-                "website": null,
-                "category": "Business",
-                "rating": null,
-                "hours": null,
-                "location": null
-            }
-        ]
-    },
-    {
-        "metadata": {
-            "source": {
-                "name": "Hotel Toachi",
-                "url": "http://www.hoteltoachi.com/",
-                "type": "Hotel Website",
-                "summary": "Hotel Toachi is a hotel located in Santo Domingo, offering lodging and event services. The website provides information about the hotel's location, contact details, and online booking options."
-            },
-            "result": {
-                "success": false,
-                "entities_found": 0,
-                "error": "GeoFiltered",
-                "error_details": "The provided address does not contain a Dominican Republic city/province. The hotel is located in Santo Domingo, Ecuador, not the Dominican Republic."
-            },
-            "relevant_urls": []
-        },
-        "entities": []
     }
 ]

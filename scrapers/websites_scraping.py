@@ -26,7 +26,6 @@ import traceback
 import logging
 from typing import Dict, Any, List, Optional, Union
 from dataclasses import dataclass, field
-from urllib.parse import urlparse
 
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, CacheMode, BrowserConfig
 
@@ -61,7 +60,7 @@ class WebsiteScrapingConfig:
         crawler_run_config: Runtime configuration for Crawl4AI crawler
         extraction_config: Configuration for LLM data extraction
     """
-    min_html_length: int = 20000
+    min_html_length: int = 2000
     max_concurrent_requests: int = 5
     request_delay_seconds: float = 1.0
     
@@ -157,24 +156,8 @@ class WebsitesScraping:
         self.html_processor = HTMLContentProcessor()
         
         logger.info(f"Initialized WebsitesScraping with {len(self.urls)} URLs")
-        logger.info(f"Scraping method: {self.scraping_method}")
-        logger.info(f"URLs to process: {[self._get_domain_from_url(url) for url in self.urls]}")
-
-    def _get_domain_from_url(self, url: str) -> str:
-        """
-        Extract domain from URL for logging and identification.
-        
-        Args:
-            url: Full URL string
-            
-        Returns:
-            Domain name extracted from URL
-        """
-        try:
-            parsed = urlparse(url)
-            return parsed.netloc or url
-        except Exception:
-            return url
+        # logger.info(f"Scraping method: {self.scraping_method}")
+        # logger.info(f"URLs to process: {[url for url in self.urls]}")
 
     def _create_error_response(
         self,
@@ -199,7 +182,6 @@ class WebsitesScraping:
             'message': error_message,
             'status_code': status_code,
             'url': url,
-            'domain': self._get_domain_from_url(url),
             'error_type': 'ScrapingError',
             'timestamp': time.time()
         }
@@ -226,8 +208,7 @@ class WebsitesScraping:
         Returns:
             Dictionary containing scraped data or error information
         """
-        domain = self._get_domain_from_url(url)
-        logger.debug(f"Starting direct scraping for: {domain}")
+        logger.debug(f"Starting direct scraping for: {url}")
         
         try:
             # Make HTTP request
@@ -235,7 +216,7 @@ class WebsitesScraping:
             
             # Validate response
             if not raw_html:
-                error_message = f"No HTML content returned for '{domain}'. Status code: {status_code}"
+                error_message = f"No HTML content returned for '{url}'. Status code: {status_code}"
                 logger.warning(f"❌ {error_message}")
                 return self._create_error_response(url, error_message, status_code)
             
@@ -243,12 +224,12 @@ class WebsitesScraping:
             if status_code == 200 and len(raw_html) >= self.config.min_html_length:
                 # Process successful response
                 cleaned_data = self.html_processor.get_llm_friendly_content(raw_html=raw_html)
-                logger.info(f"✅ Successfully scraped '{domain}' - HTML length: {len(raw_html):,}")
+                logger.info(f"✅ Successfully scraped '{url}' - HTML length: {len(raw_html):,}")
                 return {url: cleaned_data}
             else:
                 # Handle short content or non-200 status
                 error_message = (
-                    f"Content validation failed for '{domain}'. "
+                    f"Content validation failed for '{url}'. "
                     f"Status: {status_code}, HTML length: {len(raw_html):,} "
                     f"(minimum required: {self.config.min_html_length:,})"
                 )
@@ -256,25 +237,10 @@ class WebsitesScraping:
                 return self._create_error_response(url, error_message, status_code, raw_html)
                 
         except Exception as scraping_error:
-            error_message = f"Unexpected error during direct scraping of '{domain}': {str(scraping_error)}"
+            error_message = f"Unexpected error during direct scraping of '{url}': {str(scraping_error)}"
             logger.error(f"❌ {error_message}")
             logger.debug(f"Direct scraping error traceback: {traceback.format_exc()}")
             return self._create_error_response(url, error_message)
-
-    async def _scrape_single_url_crawl4ai(self, crawler: AsyncWebCrawler, url: str) -> Dict[str, Any]:
-        """
-        Process a single Crawl4AI result.
-        
-        Args:
-            crawler: AsyncWebCrawler instance (not used directly but kept for consistency)
-            url: URL being processed
-            
-        Returns:
-            Dictionary containing processed data or error information
-        """
-        # This method will be called from the batch processing
-        # The actual crawling is done in scrape_with_crawl4ai
-        pass
 
     async def _process_crawl4ai_result(self, result) -> Dict[str, Any]:
         """
@@ -287,7 +253,6 @@ class WebsitesScraping:
             Dictionary containing processed data or error information
         """
         url = str(result.url)
-        domain = self._get_domain_from_url(url)
         
         try:
             # Check if scraping was successful
@@ -296,7 +261,7 @@ class WebsitesScraping:
                 raw_html = result.html
                 markdown = getattr(result, 'markdown', '')
                 
-                logger.info(f"✅ Successfully scraped '{domain}' - HTML length: {len(raw_html):,}")
+                logger.info(f"✅ Successfully scraped '{url}' - HTML length: {len(raw_html):,}")
                 
                 # Process content for LLM
                 cleaned_data = self.html_processor.get_llm_friendly_content(
@@ -307,7 +272,7 @@ class WebsitesScraping:
             else:
                 # Handle failed or insufficient content
                 error_message = (
-                    f"Crawl4AI scraping failed for '{domain}'. "
+                    f"Crawl4AI scraping failed for '{url}'. "
                     f"Success: {result.success}, Status: {result.status_code}, "
                     f"HTML length: {len(result.html):,} "
                     f"(minimum required: {self.config.min_html_length:,}), "
@@ -323,7 +288,7 @@ class WebsitesScraping:
                 )
                 
         except Exception as processing_error:
-            error_message = f"Error processing Crawl4AI result for '{domain}': {str(processing_error)}"
+            error_message = f"Error processing Crawl4AI result for '{url}': {str(processing_error)}"
             logger.error(f"❌ {error_message}")
             logger.debug(f"Crawl4AI processing error traceback: {traceback.format_exc()}")
             return self._create_error_response(url, error_message)
@@ -447,7 +412,7 @@ class WebsitesScraping:
             
             # Save debug files for analysis
             save_debug_files(website_scraped_content=results)
-            logger.debug("Debug files saved successfully")
+            # logger.debug("Debug files saved successfully")
             
             return results
             
@@ -521,7 +486,7 @@ class WebsitesScraping:
             # Step 3: Save results if requested
             if save_results and extracted_data:
                 save_output_data(output_data=extracted_data)
-                logger.info("📁 Results saved to output files")
+                # logger.info("📁 Results saved to output files")
             
             # Calculate and log pipeline metrics
             pipeline_elapsed_time = time.time() - pipeline_start_time
@@ -553,7 +518,7 @@ def create_website_scraper(
     urls: List[str],
     scraping_method: str = 'direct',
     llm_configuration: Dict[str, Any] = None,
-    min_html_length: int = 20000,
+    min_html_length: int = 2000,
     max_concurrent_requests: int = 5
 ) -> WebsitesScraping:
     """
@@ -595,9 +560,12 @@ if __name__ == "__main__":
     """
     # Sample URLs for testing
     test_urls = [
+        # "https://www.yelu.do/category/restaurantes"
         "https://paginasamarillas.com.do/en/business/search/republica-dominicana/c/directorios-telefonicos-y-guias",
-        "http://www.hoteltoachi.com/"
+        # "http://www.hoteltoachi.com/"
     ]
+    # from main import load_input_data
+    # test_urls = load_input_data('input/website_urls_list.json')
     
     async def run_scraping_test(method: str) -> List[Dict[str, Any]]:
         """
@@ -609,20 +577,20 @@ if __name__ == "__main__":
         Returns:
             List of extraction results
         """
-        logger.info(f"🧪 Testing scraping with method: {method}")
+        # logger.info(f"🧪 Testing scraping with method: {method}")
         
         try:
             # Create scraper instance
             scraper = create_website_scraper(
                 urls=test_urls,
                 scraping_method=method,
-                min_html_length=15000,  # Lower threshold for testing
+                min_html_length=2000,  # Lower threshold for testing
                 max_concurrent_requests=3
             )
             
             # Execute complete pipeline
             results = await scraper.scrape_and_extract_data(
-                extraction_method='crawl4ai',
+                extraction_method='direct',
                 save_results=True
             )
             
@@ -637,17 +605,12 @@ if __name__ == "__main__":
     async def main():
         """Main test execution function."""
         logger.info("🚀 Starting website scraping tests")
-        
-        # Test direct scraping method
-        logger.info("=" * 60)
-        logger.info("Testing Direct HTTP Scraping Method")
-        logger.info("=" * 60)
-        
+
         start_time = time.time()
         direct_results = await run_scraping_test(method='direct')
         direct_elapsed = time.time() - start_time
         
-        logger.info(f"✅ Direct method completed in {direct_elapsed:.2f} seconds")
+        # logger.info(f"✅ Direct method completed in {direct_elapsed:.2f} seconds")
         logger.info(f"📊 Direct results count: {len(direct_results)}")
         
         # Uncomment to test Crawl4AI method

@@ -313,5 +313,37 @@
             }
         },
         "urls": []
+    },
+    {
+        "metadata": {
+            "context": {
+                "query": "unknown",
+                "url": "https://www.google.com/search?q=restaurantes+zona+colonial&num=50&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en",
+                "results": 0
+            },
+            "result": {
+                "success": false,
+                "urls_found": 0,
+                "error": "ExtractionError",
+                "error_details": "Invalid array structure in LLM response"
+            }
+        },
+        "urls": []
+    },
+    {
+        "metadata": {
+            "context": {
+                "query": "unknown",
+                "url": "https://www.google.com/search?q=hoteles+santo+domingo&num=50&cr=countryDO&gl=DO&start=0&tbs=lr%3Alang_1en",
+                "results": 0
+            },
+            "result": {
+                "success": false,
+                "urls_found": 0,
+                "error": "ExtractionError",
+                "error_details": "Invalid array structure in LLM response"
+            }
+        },
+        "urls": []
     }
 ]

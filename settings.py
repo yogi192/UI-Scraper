@@ -160,10 +160,10 @@ Extract ONLY URLs from search results that likely contain:
 # ⚙️ LLM Configuration
 # -------------------------
 
-from crawl4ai import LLMConfig
 import os
 
 LLM_CONFIG = {
+    # Syntax (Provider)/(Model), Visit: "https://docs.litellm.ai/docs/providers/" for more details
     "provider": "openrouter/google/gemini-2.0-flash-001", 
-    "api_token": os.getenv("OPEN_ROUTER_API_KEY"),
+    "api_token": os.getenv("API_KEY"),
 }
