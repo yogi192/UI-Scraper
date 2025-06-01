@@ -1,18 +1,55 @@
 # AI-Powered Business Data Crawler - Technical Documentation
 
 ## Table of Contents
-1. [System Overview](#system-overview)
-2. [Core Architecture](#core-architecture)
-3. [Component Details](#component-details)
-4. [Data Flow](#data-flow)
-5. [Integration Patterns](#integration-patterns)
-6. [Error Handling & Recovery](#error-handling--recovery)
-7. [Performance Optimizations](#performance-optimizations)
-8. [Extension Points](#extension-points)
+- [AI-Powered Business Data Crawler - Technical Documentation](#ai-powered-business-data-crawler---technical-documentation)
+  - [Table of Contents](#table-of-contents)
+  - [1. Introduction](#1-introduction)
+    - [1.1 Purpose](#11-purpose)
+    - [1.2 Audience](#12-audience)
+  - [System Overview](#system-overview)
+    - [2.1 High-Level Architecture](#21-high-level-architecture)
+  - [Core Architecture](#core-architecture)
+    - [Component Structure](#component-structure)
+    - [Processing Pipeline](#processing-pipeline)
+  - [Component Details](#component-details)
+    - [1. Main Controller (`main.py`)](#1-main-controller-mainpy)
+    - [2. Search Processing (`searches_scraping.py`)](#2-search-processing-searches_scrapingpy)
+    - [3. Website Processing (`websites_scraping.py`)](#3-website-processing-websites_scrapingpy)
+    - [4. LLM Processing (`llm_data_extraction.py`)](#4-llm-processing-llm_data_extractionpy)
+  - [Data Flow](#data-flow)
+    - [1. Search Flow](#1-search-flow)
+    - [2. Website Flow](#2-website-flow)
+  - [Integration Patterns](#integration-patterns)
+    - [1. Async Processing Model](#1-async-processing-model)
+    - [2. Error Handling](#2-error-handling)
+  - [Performance Optimizations](#performance-optimizations)
+  - [Extension Points](#extension-points)
+    - [1. New Scraping Methods](#1-new-scraping-methods)
+    - [2. Custom LLM Integration](#2-custom-llm-integration)
+    - [3. New Data Schemas](#3-new-data-schemas)
+  - [Error Handling \& Recovery](#error-handling--recovery)
+    - [1. Retry Mechanism](#1-retry-mechanism)
+    - [2. Error Types \& Recovery](#2-error-types--recovery)
+  - [Performance Considerations](#performance-considerations)
+
+## 1. Introduction
+
+### 1.1 Purpose
+This document provides a comprehensive technical overview of the AI-Powered Business Data Crawler. It aims to explain the system's architecture, components, data flow, and key technical concepts. The document is structured to cater to different audiences, from software architects and developers to product managers and beginners.
+
+### 1.2 Audience
+* **Software Architects:** To understand the overall system design, component interactions, and scaling considerations.
+* **Software Developers:** To understand the codebase structure, key modules, development workflow, and extension points.
+* **Product Managers:** To understand the system's capabilities, configuration options, and potential use cases.
+* **Beginners:** To get a foundational understanding of how the system works and how to use it.
 
 ## System Overview
 
-The system is designed as a modular, asynchronous data extraction pipeline with several key subsystems:
+The AI-Powered Business Data Crawler is designed as a flexible, modular, and asynchronous data extraction pipeline. It automates the process of discovering and extracting structured business information from websites, leveraging large language models (LLMs) for intelligent data extraction.
+
+### 2.1 High-Level Architecture
+
+The system is structured into several logical layers and key subsystems:
 
 ```mermaid
 graph TB
