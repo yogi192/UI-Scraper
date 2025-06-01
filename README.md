@@ -108,11 +108,54 @@ ai_powered_bussineses_data_crawler/
 
 ```mermaid
 graph TB
-    A[Search Terms] --> B[Search Results]
-    B --> C[Business URLs]
-    C --> D[Raw HTML]
-    D --> E[Structured Data]
-    E --> F[Validated Output]
+    subgraph "Input Sources"
+        A1[Search Terms List] --> B1[URL Generator]
+        A2[Search URLs List] --> B2[Search Scraper]
+        A3[Website URLs List] --> D2[URL Collector]
+    end
+
+    subgraph "Search Processing"
+        B1 --> B2
+        B2 --> C1[Search Results]
+        C1 --> C2[LLM URL Extraction]
+        
+        subgraph "LLM URL Processing"
+            C2 --> |Primary| C3[Crawl4AI Strategy]
+            C2 --> |Fallback| C4[Direct API]
+            C3 --> |Success/Fail| C5[URL Validation]
+            C4 --> |Success/Fail| C5
+        end
+        
+        C5 --> D1[Valid Business URLs]
+        D1 --> D2
+    end
+
+    subgraph "Website Processing"
+        D2 --> |Method Choice| E0[Scraping Method]
+        E0 --> |Option 1| E1[Direct HTTP]
+        E0 --> |Option 2| E2[Crawl4AI Browser]
+        
+        E1 & E2 --> F1[HTML Cleaning]
+        F1 --> F2[Content Processing]
+        F2 --> G1[LLM Data Extraction]
+        
+        subgraph "LLM Data Processing"
+            G1 --> |Primary| G2[Crawl4AI Extractor]
+            G1 --> |Fallback| G3[Direct API]
+            G2 --> |Success/Fail| G4[Result Merger]
+            G3 --> |Success/Fail| G4
+        end
+    end
+
+    subgraph "Output Processing"
+        G4 --> H1[Schema Validation]
+        H1 --> |Valid| I1[Clean Data]
+        H1 --> |Invalid| H2[Error Handler]
+        H2 --> |Retry| G1
+        I1 --> J1[Raw JSON]
+        I1 --> J2[Cleaned JSON]
+        I1 --> J3[Backup JSON]
+    end
 ```
 
 ### 2. Clean Data Structure
@@ -121,30 +164,41 @@ Get organized, validated JSON output:
 
 ```json
 {
-    "metadata": {
-        "source": {
-            "url": "https://example.do",
-            "type": "Business Website",
-            "language": "es"
-        }
+  "metadata": {
+    "source": {
+      "name": "Actual website title",
+      "url": "Current page URL",
+      "type": "Site category",
+      "summary": "2-3 sentence purpose analysis"
     },
-    "business_data": {
-        "name": "Restaurant Name",
-        "address": "Av. Example 123, Santo Domingo",
-        "phone": "(809) 555-1234",
-        "website": "https://example.do",
-        "category": "Restaurant",
-        "rating": "4.5/5",
-        "hours": {
-            "weekdays": "9AM-10PM",
-            "weekends": "10AM-11PM"
-        },
-        "location": {
-            "lat": 18.4861,
-            "lng": -69.9312
-        }
+    "result": {
+      "success": true/false,
+      "entities_found": number,
+      "error": null | "ErrorType",
+      "error_details": "Detailed reason"
+    },
+    "relevant_urls": [
+      {
+        "title": "Relevant page title",
+        "reason": "Why this might contain more DR data",
+        "url": "Complete URL"
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Example Business",
+      "address": "Av. Abraham Lincoln 123, Santo Domingo",
+      "phone": "(809) 555-1234",
+      "website": "https://www.example.do",
+      "category": "Restaurant",
+      "rating": "4.5/5 (Google)",
+      "hours": {"weekdays": "9AM-7PM", "weekend": "Closed"},
+      "location": {"lat": 18.486058, "lng": -69.931212}
     }
+  ]
 }
+
 ```
 
 ## ⚙️ Configuration Options
