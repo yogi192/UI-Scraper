@@ -89,7 +89,9 @@ def setup_logging(
     console_level: int = logging.INFO, # Default level for console output
     file_level: int = logging.DEBUG,    # Default level for file output
     save_log: bool = True,
-    log_dir: str = r"Logs\General_Logs" # Default log directory
+    log_dir: str = r"Logs\General_Logs", # Default log directory
+    use_mongodb: bool = False,
+    mongodb_level: int = logging.INFO
 ) -> logging.Logger:
     """
     Configures a logger with specified levels for console and file handlers.
@@ -103,6 +105,8 @@ def setup_logging(
         file_level (int): Logging level for file output (e.g., logging.DEBUG).
         save_log (bool): If True, enables saving logs to a file.
         log_dir (str): Directory where the log file will be saved.
+        use_mongodb (bool): If True, enables saving logs to MongoDB.
+        mongodb_level (int): Logging level for MongoDB output.
 
     Returns:
         logging.Logger: The configured logger instance.
@@ -143,7 +147,23 @@ def setup_logging(
                 logger.error(f"Failed to set up file logging to {log_file_path}: {e}", exc_info=True)
                 # Optionally, you could remove the failed handler if added partially,
                 # but basic addHandler failures are less common than I/O errors later.
-
+        
+        # --- MongoDB Handler (Optional) ---
+        if use_mongodb:
+            try:
+                from .mongodb_logging import MongoDBHandler
+                mongodb_handler = MongoDBHandler()
+                mongodb_handler.setLevel(mongodb_level)
+                # Use standard formatter for MongoDB
+                mongodb_formatter = logging.Formatter(
+                    '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S'
+                )
+                mongodb_handler.setFormatter(mongodb_formatter)
+                logger.addHandler(mongodb_handler)
+            except Exception as e:
+                # Log error if MongoDB handler setup fails
+                logger.error(f"Failed to set up MongoDB logging: {e}", exc_info=True)
 
     # If logger was already configured, you could optionally update levels here,
     # but for simplicity, this setup assumes configuration happens once at startup.

@@ -1,0 +1,70 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: ui-scraper-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: ui_scraper
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - ui-scraper-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: ui-scraper-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - ui-scraper-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: ui-scraper-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_NAME=ui_scraper
+    depends_on:
+      - mongodb
+      - redis
+    volumes:
+      - ./scrapers:/app/scrapers
+      - ./schemas:/app/schemas
+      - ./utils:/app/utils
+      - ./settings.py:/app/settings.py
+      - ./input:/app/input
+      - ./output:/app/output
+      - ./logs:/app/logs
+    networks:
+      - ui-scraper-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ui-scraper-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
+    networks:
+      - ui-scraper-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  ui-scraper-network:
+    driver: bridge

@@ -491,6 +491,101 @@ async def quick_search_extraction(
 
 
 # =============================================================================
+# Wrapper Functions for Job Runner
+# =============================================================================
+
+async def process_search_terms(terms: List[str], job_id: Optional[str] = None) -> Dict[str, Any]:
+    """
+    Process search terms and extract business URLs.
+    
+    Args:
+        terms: List of search terms to process
+        job_id: Optional job ID for progress tracking
+        
+    Returns:
+        Dictionary with extracted URLs and processing statistics
+    """
+    try:
+        # Create scraper with default configuration
+        scraper = create_search_scraper()
+        
+        # Extract business URLs from searches
+        results = await scraper.extract_business_urls_from_searches(
+            search_terms=terms,
+            llm_extraction_method='crawl4ai'
+        )
+        
+        # Collect all extracted URLs
+        all_urls = []
+        for result in results:
+            if hasattr(result, 'urls') and result.urls:
+                for url_info in result.urls:
+                    if hasattr(url_info, 'url'):
+                        all_urls.append(url_info.url)
+        
+        return {
+            "urls": all_urls,
+            "processed": len(terms),
+            "status": "completed",
+            "total_urls_found": len(all_urls)
+        }
+    except Exception as e:
+        logger.error(f"Error processing search terms: {str(e)}")
+        return {
+            "urls": [],
+            "processed": 0,
+            "status": "failed",
+            "error": str(e)
+        }
+
+
+async def process_search_urls(urls: List[str], job_id: Optional[str] = None) -> Dict[str, Any]:
+    """
+    Process search URLs directly.
+    
+    Args:
+        urls: List of search URLs to process
+        job_id: Optional job ID for progress tracking
+        
+    Returns:
+        Dictionary with extracted URLs and processing statistics
+    """
+    try:
+        # Create scraper with default configuration
+        scraper = create_search_scraper()
+        
+        # Process search URLs directly
+        results = await scraper.scrape_multiple_search_results(
+            search_urls=urls,
+            extract_urls=True,
+            llm_extraction_method='crawl4ai'
+        )
+        
+        # Collect all extracted URLs
+        all_urls = []
+        for result in results:
+            if hasattr(result, 'urls') and result.urls:
+                for url_info in result.urls:
+                    if hasattr(url_info, 'url'):
+                        all_urls.append(url_info.url)
+        
+        return {
+            "urls": all_urls,
+            "processed": len(urls),
+            "status": "completed",
+            "total_urls_found": len(all_urls)
+        }
+    except Exception as e:
+        logger.error(f"Error processing search URLs: {str(e)}")
+        return {
+            "urls": [],
+            "processed": 0,
+            "status": "failed",
+            "error": str(e)
+        }
+
+
+# =============================================================================
 # Main Execution Block
 # =============================================================================
 
