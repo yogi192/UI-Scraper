@@ -176,7 +176,7 @@ async def test_pipeline():
 if __name__ == "__main__":
     # Check if API key is set
     api_key = os.getenv("GOOGLE_API_KEY")
-    if not api_key or api_key == "AIzaSyA9ZInLikGGl2-Nm7IPVzzz_4jTed_DCk0":
+    if not api_key:
         logger.error("❌ Please set a valid GOOGLE_API_KEY environment variable")
         logger.error("Export it with: export GOOGLE_API_KEY='your-actual-api-key'")
         sys.exit(1)
