@@ -10,15 +10,16 @@ from typing import Dict, Any, List, Optional
 from scrapers.websites_scraping import WebsitesScraping, WebsiteScrapingConfig
 from utils.mongodb_client import mongodb_client
 from utils.helpers import save_output_data
+from settings import get_llm_config
 import logging
 
 logger = logging.getLogger(__name__)
 
-class WebsitesScrapingWithDB(WebsitesScraping):
+class WebsitesScrapingWithDB:
     """Extended website scraping class with MongoDB persistence"""
     
     def __init__(self, config: Optional[WebsiteScrapingConfig] = None):
-        super().__init__(config)
+        self.config = config or WebsiteScrapingConfig()
         self.job_id = None
     
     async def process_urls(
@@ -42,17 +43,33 @@ class WebsitesScrapingWithDB(WebsitesScraping):
         """
         self.job_id = job_id
         
-        # Process URLs using parent class method
-        results = await self.process_urls_batch(urls)
+        # Create WebsitesScraping instance with URLs and current LLM config
+        scraper = WebsitesScraping(
+            urls=urls,
+            scraping_method='direct',
+            llm_configuration=get_llm_config(),
+            scraping_config=self.config
+        )
+        
+        # Process URLs
+        results_list = await scraper.scrape_and_extract_data()
         
         # Extract successful results
         successful_results = []
-        for result in results.get("results", []):
-            if result.get("success") and result.get("entities"):
-                for entity in result["entities"]:
-                    # Add source information
-                    entity["source_url"] = result.get("url")
-                    entity["source_name"] = result.get("source", {}).get("name")
+        for result in results_list:
+            if isinstance(result, dict) and not result.get("error_type"):
+                # If result contains entities array (from LLM extraction)
+                if "entities" in result:
+                    for entity in result["entities"]:
+                        # Add source information
+                        entity["source_url"] = result.get("source", {}).get("url", "")
+                        entity["source_name"] = result.get("source", {}).get("name", "")
+                        successful_results.append(entity)
+                # If result is already an entity (direct extraction)
+                elif result.get("name") or result.get("business_name"):
+                    entity = result.copy()
+                    entity["source_url"] = result.get("url", "")
+                    entity["source_name"] = "Website"
                     successful_results.append(entity)
         
         # Save to files if requested
@@ -68,17 +85,20 @@ class WebsitesScrapingWithDB(WebsitesScraping):
         
         # Update job progress if job_id provided
         if job_id:
+            failed_count = len([r for r in results_list if isinstance(r, dict) and r.get("error_type")])
             await mongodb_client.update_job_progress(job_id, {
                 "processed": len(urls),
                 "successful": len(successful_results),
-                "failed": len(urls) - len([r for r in results.get("results", []) if r.get("success")])
+                "failed": failed_count
             })
         
         return {
             "urls_processed": len(urls),
             "entities_found": len(successful_results),
-            "results": results,
-            "saved_to_db": save_to_db and len(successful_results) > 0
+            "results": results_list,
+            "saved_to_db": save_to_db and len(successful_results) > 0,
+            "processed": len(urls),
+            "status": "completed"
         }
 
 # Wrapper functions for job runner

@@ -82,7 +82,7 @@ class Crawl4AIConfig:
         crawler_run_config: Runtime configuration for crawler operations
     """
     browser_config: BrowserConfig = field(
-        default_factory=lambda: BrowserConfig(headless=False)
+        default_factory=lambda: BrowserConfig(headless=True)
     )
     crawler_run_config: CrawlerRunConfig = field(
         default_factory=lambda: CrawlerRunConfig(cache_mode=CacheMode.BYPASS)

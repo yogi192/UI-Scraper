@@ -29,7 +29,7 @@ class MongoDBClient:
     
     async def save_businesses(self, businesses: List[Dict[str, Any]], source_type: str = "website"):
         """Save businesses to MongoDB with duplicate detection"""
-        if not self.database:
+        if self.database is None:
             await self.connect()
         
         collection = self.database.businesses
@@ -88,7 +88,7 @@ class MongoDBClient:
     
     async def save_search_results(self, results: List[Dict[str, Any]]):
         """Save search results to MongoDB"""
-        if not self.database:
+        if self.database is None:
             await self.connect()
         
         collection = self.database.search_results
@@ -101,7 +101,7 @@ class MongoDBClient:
     
     async def update_job_progress(self, job_id: str, progress: Dict[str, Any]):
         """Update job progress"""
-        if not self.database:
+        if self.database is None:
             await self.connect()
         
         if job_id:

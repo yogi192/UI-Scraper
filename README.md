@@ -46,8 +46,8 @@ Our solution transforms this into an automated, intelligent process - what used 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Mr-Anas608/ai_powered_bussineses_data_crawler.git
-   cd ai-powered-business-crawler
+   git clone https://github.com/your-username/UI-Scraper.git
+   cd UI-Scraper
    ```
 
 2. Install dependencies:
@@ -59,8 +59,37 @@ Our solution transforms this into an automated, intelligent process - what used 
 3. Set up your environment variables:
 
    ```bash
-   # Add to .env file
-   API_KEY=your_llm_api_key
+   # Copy the example .env file
+   cp .env.example .env
+   
+   # Edit .env and add your Google API key
+   # Get your API key from https://makersuite.google.com/app/apikey
+   GOOGLE_API_KEY=your_google_api_key_here
+   ```
+
+## 🐳 Docker Setup (Web Interface)
+
+For the full-stack web interface with database persistence:
+
+1. Make sure your `.env` file contains your Google API key:
+   ```bash
+   GOOGLE_API_KEY=your_actual_google_api_key
+   ```
+
+2. Start the services:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Access the web interface:
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:8000
+   - API Documentation: http://localhost:8000/docs
+
+4. To rebuild after changes:
+   ```bash
+   docker-compose down
+   docker-compose up --build -d
    ```
 
 ## 🎮 Usage Guide

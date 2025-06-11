@@ -33,10 +33,12 @@ services:
       - MONGODB_URL=mongodb://mongodb:27017
       - REDIS_URL=redis://redis:6379
       - DATABASE_NAME=ui_scraper
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
     depends_on:
       - mongodb
       - redis
     volumes:
+      - ./backend/app:/app/app
       - ./scrapers:/app/scrapers
       - ./schemas:/app/schemas
       - ./utils:/app/utils
@@ -44,6 +46,7 @@ services:
       - ./input:/app/input
       - ./output:/app/output
       - ./logs:/app/logs
+      - ./.env:/app/.env
     networks:
       - ui-scraper-network
 

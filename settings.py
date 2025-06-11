@@ -162,8 +162,15 @@ Extract ONLY URLs from search results that likely contain:
 
 import os
 
-LLM_CONFIG = {
-    # Syntax (Provider)/(Model), Visit: "https://docs.litellm.ai/docs/providers/" for more details
-    "provider": "openrouter/google/gemini-2.0-flash-001", 
-    "api_token": os.getenv("API_KEY"),
-}
+def get_llm_config():
+    """Get LLM configuration with current environment variables"""
+    return {
+        # Using Google Gemini directly (not through OpenRouter)
+        # Syntax: gemini/<model-name>
+        # See: https://docs.litellm.ai/docs/providers/gemini
+        "provider": "gemini/gemini-2.0-flash-exp", 
+        "api_token": os.getenv("GOOGLE_API_KEY"),
+    }
+
+# Default configuration (for backward compatibility)
+LLM_CONFIG = get_llm_config()

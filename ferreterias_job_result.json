@@ -1,0 +1,325 @@
+{
+  "urls_processed": 1,
+  "entities_found": 15,
+  "results": [
+    {
+      "metadata": {
+        "source": {
+          "name": "FERRETERIAS en Santo Domingo | Páginas Amarillas",
+          "url": "https://paginasamarillas.com.do/es/business/search/santo-domingo/c/ferreterias",
+          "type": "Business Directory",
+          "summary": "This is a business directory page listing hardware stores (ferreterias) in Santo Domingo, Dominican Republic. It provides names, addresses, phone numbers, and other details for various businesses in the hardware category."
+        },
+        "result": {
+          "success": true,
+          "entities_found": 15,
+          "error": null,
+          "error_details": null
+        },
+        "relevant_urls": [
+          {
+            "title": "Ver Mapa",
+            "reason": "May contain a map view of the listed ferreterias, potentially revealing location data.",
+            "url": "/es/business/search-map/santo-domingo/ferreterias"
+          },
+          {
+            "title": "Cómo Anunciarte",
+            "reason": "This page might contain information about how businesses can list themselves on the site, potentially revealing more businesses.",
+            "url": "/es/info/about"
+          },
+          {
+            "title": "Sugerir Negocio",
+            "reason": "This page allows users to suggest businesses to be added to the directory, potentially leading to more data.",
+            "url": "https://paginasamarillas.com.do/es/suggest"
+          }
+        ]
+      },
+      "entities": [
+        {
+          "name": "Ferretería MC",
+          "address": "Av. John F. Kennedy 1, Distrito Nacional, Santo Domingo",
+          "phone": "(809) 565-5797",
+          "website": "https://www.mc.com.do/",
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.480669,
+            "lng": -69.961658
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.737000",
+          "source_type": "website"
+        },
+        {
+          "name": "Ferretería MC",
+          "address": "Av. John F. Kennedy 1, Distrito Nacional, Santo Domingo",
+          "phone": "(809) 565-5797",
+          "website": "https://www.mc.com.do/",
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.480669,
+            "lng": -69.961658
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.738000",
+          "source_type": "website"
+        },
+        {
+          "name": "Ferretería San Miguel",
+          "address": "Av. Independencia no. 3005, Alfimar, Distrito Nacional SD",
+          "phone": "(809) 535-4142",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.4364472,
+            "lng": -69.9568629
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.739000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.739000",
+          "_id": "6848d4e62ddd09e7b22fc027"
+        },
+        {
+          "name": "Ferretería Felimón",
+          "address": "Calle 4ta No.1, Alameda, Santo Domingo Oeste SD",
+          "phone": "(809) 560-0071",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.4896592,
+            "lng": -69.9843005
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.739000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.739000",
+          "_id": "6848d4e62ddd09e7b22fc028"
+        },
+        {
+          "name": "Corporación Amadea",
+          "address": "Parque Industrial Duarte, Los Alcarrizos (Zona urbana), Los Alcarrizos SD",
+          "phone": "(809) 560-5595",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.5031941,
+            "lng": -70.0003616
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.740000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.740000",
+          "_id": "6848d4e62ddd09e7b22fc029"
+        },
+        {
+          "name": "Ferretería & Maderas Beato",
+          "address": "Máximo Grullón No. 61, Villa Consuelo, Distrito Nacional SD",
+          "phone": "(809) 536-8224",
+          "website": "https://home.ferreteriabeato.com/",
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.488902,
+            "lng": -69.900227
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.740000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.740000",
+          "_id": "6848d4e62ddd09e7b22fc02a"
+        },
+        {
+          "name": "Ferretería Fuente de Amor",
+          "address": "Av. Independencia No. 2, 12 de Haina, Santo Domingo Oeste SD",
+          "phone": "(809) 274-1818",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.4266755,
+            "lng": -69.9951947
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.740000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.740000",
+          "_id": "6848d4e62ddd09e7b22fc02b"
+        },
+        {
+          "name": "Ferretería La Mayorquina",
+          "address": "C. Seibo No. 95, Villa Juana, Distrito Nacional SD",
+          "phone": "(809) 221-3359",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.4880695,
+            "lng": -69.9076987
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.741000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.741000",
+          "_id": "6848d4e62ddd09e7b22fc02c"
+        },
+        {
+          "name": "Almacenes Unidos, C por A",
+          "address": "Av. Sarasota, Bella Vista, Distrito Nacional SD",
+          "phone": "(809) 472-6911",
+          "website": "https://www.unidosrd.com/",
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.4558235,
+            "lng": -69.9376159
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.741000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.741000",
+          "_id": "6848d4e62ddd09e7b22fc02d"
+        },
+        {
+          "name": "Ferretería y Pinturas Hernández Cáceres",
+          "address": "Duarte No.207, Pueblo Nuevo, Los Alcarrizos SD",
+          "phone": "(809) 548-1265",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.5245666,
+            "lng": -70.0269766
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.741000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.741000",
+          "_id": "6848d4e62ddd09e7b22fc02e"
+        },
+        {
+          "name": "Ferretería Belkis",
+          "address": "Av. Juan Pablo Duarte no.493, Ensanche Capotillo, Distrito Nacional SD",
+          "phone": "(809) 681-3812",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.5027399,
+            "lng": -69.9065134
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.741000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.742000",
+          "_id": "6848d4e62ddd09e7b22fc02f"
+        },
+        {
+          "name": "FERRETERIA GUERRERO PLOMERIA",
+          "address": "C. Manuela Díez No. 203, Villa Consuelo, Distrito Nacional SD",
+          "phone": "(809) 536-2888",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.4870753,
+            "lng": -69.8998556
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.742000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.742000",
+          "_id": "6848d4e62ddd09e7b22fc030"
+        },
+        {
+          "name": "Centro Ferretero El Poder",
+          "address": "Av. San Vicente de Paúl No. 38, Alma Rosa, Santo Domingo Este SD",
+          "phone": "(809) 592-7349",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.4940408,
+            "lng": -69.8513336
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.742000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.742000",
+          "_id": "6848d4e62ddd09e7b22fc031"
+        },
+        {
+          "name": "Montes & Merino",
+          "address": "Av. Máximo Gómez No. 198, Cristo Rey, Distrito Nacional SD",
+          "phone": "(809) 566-7161",
+          "website": "https://www.montesymerino.com/",
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.5004776,
+            "lng": -69.9156872
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.743000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.743000",
+          "_id": "6848d4e62ddd09e7b22fc032"
+        },
+        {
+          "name": "Fábrica de Blocks Mejía",
+          "address": "C. Fausto Cruz No. 10, Urbanización Brisas del Norte o Los Botados, Boca Chica SD",
+          "phone": "(809) 549-1818",
+          "website": null,
+          "category": "Business",
+          "rating": null,
+          "hours": null,
+          "location": {
+            "lat": 18.4531323,
+            "lng": -69.6470404
+          },
+          "source_url": "",
+          "source_name": "",
+          "updated_at": "2025-06-11T00:59:18.743000",
+          "source_type": "website",
+          "created_at": "2025-06-11T00:59:18.743000",
+          "_id": "6848d4e62ddd09e7b22fc033"
+        }
+      ]
+    }
+  ],
+  "saved_to_db": true,
+  "processed": 1,
+  "status": "completed"
+}

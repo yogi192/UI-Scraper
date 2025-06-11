@@ -36,7 +36,6 @@ if [ ! -f ".env" ]; then
     echo -e "${YELLOW}Creating .env file from template...${NC}"
     cat > .env << EOF
 # API Keys
-API_KEY=your_google_gemini_api_key_here
 GOOGLE_API_KEY=your_google_gemini_api_key_here
 
 # MongoDB
@@ -49,7 +48,7 @@ REDIS_URL=redis://localhost:6379
 # API Base URL for frontend
 API_BASE_URL=http://localhost:8000
 EOF
-    echo -e "${GREEN}Created .env file. Please edit it with your API keys.${NC}"
+    echo -e "${GREEN}Created .env file. Please edit it with your Google API key.${NC}"
 fi
 
 # Stop any existing containers

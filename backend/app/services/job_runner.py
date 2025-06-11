@@ -72,9 +72,15 @@ async def run_scraping_job(job_id: str):
             # Process website URLs
             urls = job["parameters"].get("urls", [])
             total_urls = len(urls)
+            logger.info(f"Processing website job with {total_urls} URLs: {urls}")
             await update_job_progress(job_id, 0, total_urls, f"Processing {total_urls} website URLs...")
             
-            result = await process_website_urls(urls, job_id=job_id)
+            try:
+                result = await process_website_urls(urls, job_id=job_id)
+                logger.info(f"Website scraping result: {result}")
+            except Exception as e:
+                logger.error(f"Error in process_website_urls: {str(e)}", exc_info=True)
+                raise
             
         elif job["type"] == JobType.SEARCH:
             # Process search terms or URLs

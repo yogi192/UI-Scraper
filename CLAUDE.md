@@ -15,7 +15,7 @@ The UI-Scraper is an AI-powered business data crawler specifically designed to c
 pip install -r requirements.txt
 
 # Set required environment variable
-export API_KEY=your_google_gemini_api_key
+export GOOGLE_API_KEY=your_google_gemini_api_key
 
 # Website scraping (direct from URLs)
 python main.py website --urls input/website_urls_list.json
@@ -62,7 +62,7 @@ Input Sources → Processing Pipeline → LLM Extraction → Output Processing
 ### Critical Components
 
 1. **LLM Integration** (`scrapers/llm_data_extraction.py`):
-   - Uses OpenRouter API with Google Gemini 2.0
+   - Uses Google Gemini API directly
    - Batch processing for efficiency
    - Multiple extraction strategies with fallback
    - Handles Spanish/English content seamlessly
@@ -96,7 +96,7 @@ Data is saved to `output/` directory:
 
 ## Important Notes
 
-- **API Key Required**: Set `API_KEY` environment variable for Google Gemini access
+- **API Key Required**: Set `GOOGLE_API_KEY` environment variable for Google Gemini access
 - **Dominican Republic Focus**: All extraction logic optimized for DR businesses
 - **Language Support**: Handles both Spanish and English content
 - **No Test Framework**: Currently no automated tests; manual testing required

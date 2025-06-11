@@ -1,10 +1,13 @@
 from fastapi import APIRouter, HTTPException, BackgroundTasks
+from fastapi.responses import Response
 from app.db.mongodb import get_database
 from app.models.job import JobModel, CreateJobRequest, JobStatus
 from app.services.job_runner import run_scraping_job
+from app.utils.json_utils import convert_mongo_doc, MongoJSONEncoder
 from typing import List, Optional
 from bson import ObjectId
 from datetime import datetime
+import json
 
 router = APIRouter()
 
@@ -32,7 +35,7 @@ async def create_job(job_request: CreateJobRequest, background_tasks: Background
     
     return JobModel(**job_data)
 
-@router.get("/", response_model=List[JobModel])
+@router.get("/")
 async def get_jobs(
     skip: int = 0,
     limit: int = 20,
@@ -45,13 +48,13 @@ async def get_jobs(
         query["status"] = status
     
     jobs = await db.jobs.find(query).sort("created_at", -1).skip(skip).limit(limit).to_list(length=limit)
-    # Convert ObjectId to string
-    for job in jobs:
-        if "_id" in job:
-            job["_id"] = str(job["_id"])
-    return jobs
+    # Convert MongoDB documents to JSON-serializable format
+    converted_jobs = [convert_mongo_doc(job) for job in jobs]
+    # Use custom JSON encoder for datetime and ObjectId
+    json_str = json.dumps(converted_jobs, cls=MongoJSONEncoder)
+    return Response(content=json_str, media_type="application/json")
 
-@router.get("/{job_id}", response_model=JobModel)
+@router.get("/{job_id}")
 async def get_job(job_id: str):
     db = get_database()
     
@@ -62,9 +65,10 @@ async def get_job(job_id: str):
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
     
-    # Convert ObjectId to string
-    job["_id"] = str(job["_id"])
-    return job
+    # Convert MongoDB document to JSON-serializable format
+    converted_job = convert_mongo_doc(job)
+    json_str = json.dumps(converted_job, cls=MongoJSONEncoder)
+    return Response(content=json_str, media_type="application/json")
 
 @router.delete("/{job_id}")
 async def cancel_job(job_id: str):

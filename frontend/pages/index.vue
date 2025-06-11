@@ -57,17 +57,19 @@ const recentJobs = ref([])
 
 onMounted(async () => {
   try {
-    const { data } = await $fetch('http://localhost:8000/api/dashboard/stats')
+    const data = await $fetch('http://localhost:8000/api/dashboard/stats')
     
-    // Update stats
-    stats.value[0].value = data.stats.total_businesses.toLocaleString()
-    stats.value[1].value = data.stats.total_jobs.toLocaleString()
-    stats.value[2].value = data.stats.completed_jobs.toLocaleString()
-    stats.value[3].value = data.stats.failed_jobs.toLocaleString()
-    
-    // Update categories and jobs
-    categories.value = data.categories
-    recentJobs.value = data.recent_jobs
+    if (data && data.stats) {
+      // Update stats
+      stats.value[0].value = data.stats.total_businesses.toLocaleString()
+      stats.value[1].value = data.stats.total_jobs.toLocaleString()
+      stats.value[2].value = data.stats.completed_jobs.toLocaleString()
+      stats.value[3].value = data.stats.failed_jobs.toLocaleString()
+      
+      // Update categories and jobs
+      categories.value = data.categories || []
+      recentJobs.value = data.recent_jobs || []
+    }
   } catch (error) {
     console.error('Failed to fetch dashboard stats:', error)
   }

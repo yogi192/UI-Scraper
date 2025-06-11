@@ -101,8 +101,8 @@ def check_frontend(base_url: str = "http://localhost:3000") -> Tuple[bool, str]:
 
 def check_environment():
     """Check environment variables"""
-    required_vars = ["API_KEY", "MONGODB_URL", "DATABASE_NAME"]
-    optional_vars = ["REDIS_URL", "GOOGLE_API_KEY"]
+    required_vars = ["GOOGLE_API_KEY", "MONGODB_URL", "DATABASE_NAME"]
+    optional_vars = ["REDIS_URL"]
     
     print("\n" + "="*50)
     print("ENVIRONMENT VARIABLES")

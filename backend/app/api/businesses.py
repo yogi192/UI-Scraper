@@ -6,7 +6,7 @@ from bson import ObjectId
 
 router = APIRouter()
 
-@router.get("/", response_model=List[BusinessModel])
+@router.get("/")
 async def get_businesses(
     skip: int = Query(0, ge=0),
     limit: int = Query(100, ge=1, le=1000),
@@ -32,12 +32,24 @@ async def get_businesses(
     cursor = db.businesses.find(query).sort(sort_by, sort_order).skip(skip).limit(limit)
     businesses = await cursor.to_list(length=limit)
     
-    # Convert ObjectId to string
+    # Clean up data for response
+    cleaned_businesses = []
     for business in businesses:
+        # Convert ObjectId to string
         if "_id" in business:
             business["_id"] = str(business["_id"])
+        
+        # Ensure hours is either a dict or None
+        if "hours" in business and isinstance(business["hours"], str):
+            business["hours"] = {"text": business["hours"]}
+        
+        # Add default source_url if missing
+        if "source_url" not in business:
+            business["source_url"] = business.get("url", "")
+            
+        cleaned_businesses.append(business)
     
-    return businesses
+    return cleaned_businesses
 
 @router.get("/count")
 async def get_businesses_count(
@@ -59,7 +71,7 @@ async def get_businesses_count(
     count = await db.businesses.count_documents(query)
     return {"count": count}
 
-@router.get("/{business_id}", response_model=BusinessModel)
+@router.get("/{business_id}")
 async def get_business(business_id: str):
     db = get_database()
     
@@ -72,6 +84,15 @@ async def get_business(business_id: str):
     
     # Convert ObjectId to string
     business["_id"] = str(business["_id"])
+    
+    # Ensure hours is either a dict or None
+    if "hours" in business and isinstance(business["hours"], str):
+        business["hours"] = {"text": business["hours"]}
+    
+    # Add default source_url if missing
+    if "source_url" not in business:
+        business["source_url"] = business.get("url", "")
+        
     return business
 
 @router.get("/categories/list")

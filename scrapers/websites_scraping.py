@@ -65,7 +65,7 @@ class WebsiteScrapingConfig:
     request_delay_seconds: float = 1.0
     
     browser_config: BrowserConfig = field(
-        default_factory=lambda: BrowserConfig(headless=False)
+        default_factory=lambda: BrowserConfig(headless=True)
     )
     
     crawler_run_config: CrawlerRunConfig = field(

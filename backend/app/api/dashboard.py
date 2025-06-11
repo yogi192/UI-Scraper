@@ -1,8 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import Response
 from app.db.mongodb import get_database
+from app.utils.json_utils import convert_mongo_doc, MongoJSONEncoder
 from typing import Dict, List
 from bson import ObjectId
 import logging
+import json
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -32,10 +35,6 @@ async def get_dashboard_stats() -> Dict:
     try:
         db = get_database()
         
-        if db is None:
-            logger.error("Database connection is None")
-            raise HTTPException(status_code=500, detail="Database connection error")
-        
         # Get counts
         total_businesses = await db.businesses.count_documents({})
         total_jobs = await db.jobs.count_documents({})
@@ -53,12 +52,10 @@ async def get_dashboard_stats() -> Dict:
         # Get recent jobs
         recent_jobs = await db.jobs.find({}).sort("created_at", -1).limit(5).to_list(length=5)
         
-        # Convert ObjectIds to strings in recent jobs
-        for job in recent_jobs:
-            if "_id" in job:
-                job["_id"] = str(job["_id"])
+        # Convert MongoDB documents to JSON-serializable format
+        recent_jobs_converted = [convert_mongo_doc(job) for job in recent_jobs]
         
-        return {
+        result = {
             "stats": {
                 "total_businesses": total_businesses,
                 "total_jobs": total_jobs,
@@ -66,8 +63,12 @@ async def get_dashboard_stats() -> Dict:
                 "failed_jobs": failed_jobs
             },
             "categories": [{"name": cat["_id"] or "Uncategorized", "count": cat["count"]} for cat in categories],
-            "recent_jobs": recent_jobs
+            "recent_jobs": recent_jobs_converted
         }
+        
+        # Return as JSON response with custom encoder
+        json_str = json.dumps(result, cls=MongoJSONEncoder)
+        return Response(content=json_str, media_type="application/json")
     except Exception as e:
         logger.error(f"Error in get_dashboard_stats: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))

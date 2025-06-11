@@ -26,13 +26,22 @@
                   :placeholder="hasApiKey ? '••••••••••••••••••••••••' : 'Enter your API key'"
                 />
               </div>
-              <div class="mt-3">
+              <div class="mt-3 flex gap-3">
                 <button
                   type="submit"
                   :disabled="saving"
                   class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50"
                 >
                   {{ saving ? 'Saving...' : 'Save API Key' }}
+                </button>
+                <button
+                  v-if="hasApiKey"
+                  type="button"
+                  @click="testApiKey"
+                  :disabled="testing"
+                  class="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50"
+                >
+                  {{ testing ? 'Testing...' : 'Test Current Key' }}
                 </button>
               </div>
             </form>
@@ -106,6 +115,7 @@ import { ref, onMounted } from 'vue'
 const apiKey = ref('')
 const hasApiKey = ref(false)
 const saving = ref(false)
+const testing = ref(false)
 const message = ref('')
 const messageType = ref('success')
 
@@ -146,10 +156,49 @@ const saveSettings = async () => {
       message.value = ''
     }, 3000)
   } catch (error) {
-    message.value = 'Failed to save API key. Please try again.'
+    console.error('Settings error:', error)
+    if (error.data?.detail) {
+      message.value = error.data.detail
+    } else {
+      message.value = 'Failed to save API key. Please try again.'
+    }
     messageType.value = 'error'
   } finally {
     saving.value = false
+  }
+}
+
+const testApiKey = async () => {
+  testing.value = true
+  message.value = ''
+  
+  try {
+    // Try to create a simple job to test the API key
+    const response = await $fetch('http://localhost:8000/api/jobs', {
+      method: 'POST',
+      body: {
+        job_type: 'test',
+        urls: ['https://example.com']
+      }
+    })
+    
+    message.value = 'API key is valid and working!'
+    messageType.value = 'success'
+    
+    // Clear message after 3 seconds
+    setTimeout(() => {
+      message.value = ''
+    }, 3000)
+  } catch (error) {
+    console.error('API key test error:', error)
+    if (error.data?.detail && error.data.detail.includes('API key')) {
+      message.value = 'API key is invalid or expired. Please update it.'
+    } else {
+      message.value = 'Failed to test API key. Please try again.'
+    }
+    messageType.value = 'error'
+  } finally {
+    testing.value = false
   }
 }
 
